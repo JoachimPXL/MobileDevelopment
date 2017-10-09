@@ -1,0 +1,5 @@
+
+target ‘BobApp' do
+  pod ‘Pulsator’
+use_frameworks!
+end

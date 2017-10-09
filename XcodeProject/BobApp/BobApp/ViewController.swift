@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Pulsator
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let pulsator = Pulsator()
+        view.layer.addSublayer(pulsator)
+        pulsator.start()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
