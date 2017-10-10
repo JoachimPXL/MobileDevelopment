@@ -1,5 +1,8 @@
 
 target ‘BobApp' do
   pod ‘Pulsator’
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
 use_frameworks!
 end

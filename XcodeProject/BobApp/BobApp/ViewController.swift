@@ -7,16 +7,17 @@
 //
 
 import UIKit
-import Pulsator
+import FacebookLogin
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let pulsator = Pulsator()
-        view.layer.addSublayer(pulsator)
-        pulsator.start()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+        let buttonPositioning = CGPoint(x: 210,y: 200)
+        loginButton.center = buttonPositioning
+        view.addSubview(loginButton)
     }
 
     override func didReceiveMemoryWarning() {
