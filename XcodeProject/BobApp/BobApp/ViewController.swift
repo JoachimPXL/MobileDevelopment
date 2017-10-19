@@ -7,17 +7,13 @@
 //
 
 import UIKit
-import FacebookLogin
+//import FacebookLogin
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-        let buttonPositioning = CGPoint(x: 210,y: 200)
-        loginButton.center = buttonPositioning
-        view.addSubview(loginButton)
+    
     }
 
     override func didReceiveMemoryWarning() {

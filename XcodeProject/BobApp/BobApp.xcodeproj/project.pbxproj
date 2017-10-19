@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4122454166EACED3F7B3530F /* Pods_BobApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9F78E333113E91A19E91E /* Pods_BobApp.framework */; };
+		AA26819C1F95F1DD00BBAA3D /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A31F95F1DD00BBAA3D /* FacebookCore.framework */; };
+		AA26819D1F95F1DD00BBAA3D /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A41F95F1DD00BBAA3D /* FacebookLogin.framework */; };
+		AA26819E1F95F1DD00BBAA3D /* FacebookShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A51F95F1DD00BBAA3D /* FacebookShare.framework */; };
+		AA26819F1F95F1DD00BBAA3D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A61F95F1DD00BBAA3D /* FBSDKCoreKit.framework */; };
+		AA2681A01F95F1DD00BBAA3D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A71F95F1DD00BBAA3D /* FBSDKLoginKit.framework */; };
+		AA2681A11F95F1DD00BBAA3D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A81F95F1DD00BBAA3D /* FBSDKShareKit.framework */; };
+		AA2681A21F95F1DD00BBAA3D /* Pulsator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A91F95F1DD00BBAA3D /* Pulsator.framework */; };
+		AA2681AB1F95FF1600BBAA3D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */; };
 		AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */; };
 		AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9836E41F86B087002AED1B /* AppDelegate.swift */; };
 		AA9836E71F86B087002AED1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9836E61F86B087002AED1B /* ViewController.swift */; };
@@ -37,6 +45,16 @@
 
 /* Begin PBXFileReference section */
 		A7EBAC871E1E8BB3D31927F4 /* Pods-BobApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BobApp/Pods-BobApp.debug.xcconfig"; sourceTree = "<group>"; };
+		AA26819A1F95F15700BBAA3D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		AA26819B1F95F15700BBAA3D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		AA2681A31F95F1DD00BBAA3D /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2681A41F95F1DD00BBAA3D /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2681A51F95F1DD00BBAA3D /* FacebookShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2681A61F95F1DD00BBAA3D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2681A71F95F1DD00BBAA3D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2681A81F95F1DD00BBAA3D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2681A91F95F1DD00BBAA3D /* Pulsator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pulsator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsatorViewController.swift; sourceTree = "<group>"; };
 		AA9836E11F86B087002AED1B /* BobApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BobApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9836E41F86B087002AED1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +78,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA26819C1F95F1DD00BBAA3D /* FacebookCore.framework in Frameworks */,
+				AA26819D1F95F1DD00BBAA3D /* FacebookLogin.framework in Frameworks */,
+				AA26819E1F95F1DD00BBAA3D /* FacebookShare.framework in Frameworks */,
+				AA26819F1F95F1DD00BBAA3D /* FBSDKCoreKit.framework in Frameworks */,
+				AA2681A01F95F1DD00BBAA3D /* FBSDKLoginKit.framework in Frameworks */,
+				AA2681A11F95F1DD00BBAA3D /* FBSDKShareKit.framework in Frameworks */,
+				AA2681A21F95F1DD00BBAA3D /* Pulsator.framework in Frameworks */,
 				4122454166EACED3F7B3530F /* Pods_BobApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +109,16 @@
 		57A772F931AA6DBA50FCA933 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA2681A31F95F1DD00BBAA3D /* FacebookCore.framework */,
+				AA2681A41F95F1DD00BBAA3D /* FacebookLogin.framework */,
+				AA2681A51F95F1DD00BBAA3D /* FacebookShare.framework */,
+				AA2681A61F95F1DD00BBAA3D /* FBSDKCoreKit.framework */,
+				AA2681A71F95F1DD00BBAA3D /* FBSDKLoginKit.framework */,
+				AA2681A81F95F1DD00BBAA3D /* FBSDKShareKit.framework */,
+				AA2681A91F95F1DD00BBAA3D /* Pulsator.framework */,
 				B5B9F78E333113E91A19E91E /* Pods_BobApp.framework */,
+				AA26819B1F95F15700BBAA3D /* FBSDKCoreKit.framework */,
+				AA26819A1F95F15700BBAA3D /* FBSDKLoginKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,6 +155,7 @@
 				AA9836ED1F86B087002AED1B /* LaunchScreen.storyboard */,
 				AA9836F01F86B087002AED1B /* Info.plist */,
 				AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */,
+				AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */,
 			);
 			path = BobApp;
 			sourceTree = "<group>";
@@ -357,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA2681AB1F95FF1600BBAA3D /* LoginViewController.swift in Sources */,
 				AA9836E71F86B087002AED1B /* ViewController.swift in Sources */,
 				AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */,
 				AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */,
@@ -532,6 +568,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = be.pxl.BobApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -548,6 +585,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = be.pxl.BobApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

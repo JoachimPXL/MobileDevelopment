@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4b1-Ht-XWM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" colorLabel="IBBuiltInLabel-Blue">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,14 +72,18 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Do-1j-z3d">
                                 <rect key="frame" x="87" y="495" width="200" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="luR-Bj-UYv"/>
-                                    <constraint firstAttribute="width" constant="200" id="pBq-Jy-Upj"/>
-                                </constraints>
                                 <state key="normal" title="Register" backgroundImage="Button">
                                     <color key="titleColor" red="1" green="0.99710999847523329" blue="0.9948138071810918" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5S-Ag-Oo2" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="42" y="108" width="290" height="59"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="Sff-8X-P94"/>
+                                    <constraint firstAttribute="height" constant="59" id="d6E-0J-mvu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92856874372158194" green="0.92380685272813778" blue="0.93333063471502586" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.11449059518630089" green="0.036882206784723315" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -87,25 +91,31 @@
                             <constraint firstItem="uGc-ke-gLD" firstAttribute="top" secondItem="VxQ-QP-noQ" secondAttribute="bottom" constant="56" id="0K7-x1-dWv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yRs-D8-nCd" secondAttribute="trailing" constant="37" id="2il-W3-mgN"/>
                             <constraint firstItem="H8f-Pb-g3X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="2sd-9D-Jfl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Do-1j-z3d" secondAttribute="trailing" constant="88" id="3O6-Fn-WJo"/>
                             <constraint firstItem="yRs-D8-nCd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="3vB-ns-Btr"/>
+                            <constraint firstItem="0Do-1j-z3d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="4rz-EO-bhO"/>
+                            <constraint firstItem="VxQ-QP-noQ" firstAttribute="top" secondItem="V5S-Ag-Oo2" secondAttribute="bottom" constant="62" id="CXb-kN-dlk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H8f-Pb-g3X" secondAttribute="trailing" constant="37" id="LDq-1D-ZEV"/>
-                            <constraint firstItem="0Do-1j-z3d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="ToI-b8-eVB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Do-1j-z3d" secondAttribute="bottom" constant="132" id="Uyt-P0-hBv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V5S-Ag-Oo2" secondAttribute="trailing" constant="43" id="TZr-U8-vlJ"/>
+                            <constraint firstItem="V5S-Ag-Oo2" firstAttribute="top" secondItem="H8f-Pb-g3X" secondAttribute="bottom" constant="58" id="V4v-GI-d4E"/>
                             <constraint firstItem="VxQ-QP-noQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="VMA-gd-D6g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uGc-ke-gLD" secondAttribute="trailing" constant="37" id="XDz-1p-Iyh"/>
                             <constraint firstItem="H8f-Pb-g3X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="c4P-cC-I9N"/>
+                            <constraint firstItem="0Do-1j-z3d" firstAttribute="top" secondItem="yRs-D8-nCd" secondAttribute="bottom" constant="100" id="cko-ZP-4e1"/>
                             <constraint firstItem="uGc-ke-gLD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="fu3-M4-Vdp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Do-1j-z3d" secondAttribute="trailing" constant="88" id="l0Q-5G-q4x"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VxQ-QP-noQ" secondAttribute="trailing" constant="37" id="oVP-Tn-D9P"/>
-                            <constraint firstItem="0Do-1j-z3d" firstAttribute="top" secondItem="yRs-D8-nCd" secondAttribute="bottom" constant="100" id="wSW-XT-zp4"/>
+                            <constraint firstItem="V5S-Ag-Oo2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="pMf-Vz-dCA"/>
                             <constraint firstItem="yRs-D8-nCd" firstAttribute="top" secondItem="uGc-ke-gLD" secondAttribute="bottom" constant="20" id="wpP-TB-h9Q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="V5S-Ag-Oo2" id="gHE-55-xEk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="135"/>
+            <point key="canvasLocation" x="144.80000000000001" y="134.48275862068968"/>
         </scene>
         <!--Pulsator View Controller-->
         <scene sceneID="o2q-aV-XPk">

@@ -41,5 +41,29 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    <!-- Facebook Login  -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb362511907533784</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>362511907533784</string>
+    <key>FacebookDisplayName</key>
+    <string>BobApp</string>
+    
+    
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
 </dict>
 </plist>
