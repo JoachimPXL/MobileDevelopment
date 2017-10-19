@@ -12,6 +12,12 @@ import FBSDKCoreKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBAction func registerEvent(_ sender: UIButton) {
+        //let newUser = User(email: emailTextField.text, password: passwordTextField.text)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +28,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginButton.delegate = self
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

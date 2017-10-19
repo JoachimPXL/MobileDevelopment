@@ -24,6 +24,7 @@
 		AA9836EF1F86B087002AED1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9836ED1F86B087002AED1B /* LaunchScreen.storyboard */; };
 		AA9836FA1F86B088002AED1B /* BobAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9836F91F86B088002AED1B /* BobAppTests.swift */; };
 		AA9837051F86B088002AED1B /* BobAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9837041F86B088002AED1B /* BobAppUITests.swift */; };
+		AAE7F0E91F9952C500AB320C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE7F0E81F9952C500AB320C /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		AA9837001F86B088002AED1B /* BobAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BobAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9837041F86B088002AED1B /* BobAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobAppUITests.swift; sourceTree = "<group>"; };
 		AA9837061F86B088002AED1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAE7F0E81F9952C500AB320C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFDF44FBA350029F4B12CD35 /* Pods-BobApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BobApp/Pods-BobApp.release.xcconfig"; sourceTree = "<group>"; };
 		B5B9F78E333113E91A19E91E /* Pods_BobApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BobApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -148,14 +150,13 @@
 		AA9836E31F86B087002AED1B /* BobApp */ = {
 			isa = PBXGroup;
 			children = (
+				AAE7F0EA1F9952F500AB320C /* Controllers */,
+				AAE7F0E51F9951B900AB320C /* DomainClasses */,
 				AA9836E41F86B087002AED1B /* AppDelegate.swift */,
-				AA9836E61F86B087002AED1B /* ViewController.swift */,
 				AA9836E81F86B087002AED1B /* Main.storyboard */,
 				AA9836EB1F86B087002AED1B /* Assets.xcassets */,
 				AA9836ED1F86B087002AED1B /* LaunchScreen.storyboard */,
 				AA9836F01F86B087002AED1B /* Info.plist */,
-				AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */,
-				AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */,
 			);
 			path = BobApp;
 			sourceTree = "<group>";
@@ -176,6 +177,24 @@
 				AA9837061F86B088002AED1B /* Info.plist */,
 			);
 			path = BobAppUITests;
+			sourceTree = "<group>";
+		};
+		AAE7F0E51F9951B900AB320C /* DomainClasses */ = {
+			isa = PBXGroup;
+			children = (
+				AAE7F0E81F9952C500AB320C /* User.swift */,
+			);
+			path = DomainClasses;
+			sourceTree = "<group>";
+		};
+		AAE7F0EA1F9952F500AB320C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */,
+				AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */,
+				AA9836E61F86B087002AED1B /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		EC76BE7CD5D266D3B782C841 /* Pods */ = {
@@ -395,6 +414,7 @@
 				AA2681AB1F95FF1600BBAA3D /* LoginViewController.swift in Sources */,
 				AA9836E71F86B087002AED1B /* ViewController.swift in Sources */,
 				AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */,
+				AAE7F0E91F9952C500AB320C /* User.swift in Sources */,
 				AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
