@@ -156,6 +156,9 @@
                                 <state key="normal" title="Scan" backgroundImage="Button">
                                     <color key="titleColor" red="1" green="0.99710999850000004" blue="0.99481380720000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="scanRadius:" destination="4b1-Ht-XWM" eventType="touchUpInside" id="mGs-wq-XoM"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="a3m-y6-AzJ">
                                 <rect key="frame" x="30" y="587" width="177" height="29"/>
@@ -174,7 +177,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pinpoint" translatesAutoresizingMaskIntoConstraints="NO" id="TXr-uZ-uHb">
-                                <rect key="frame" x="183" y="179" width="24" height="28"/>
+                                <rect key="frame" x="188" y="172" width="46" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
