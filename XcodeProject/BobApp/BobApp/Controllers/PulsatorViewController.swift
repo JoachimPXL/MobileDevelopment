@@ -13,9 +13,21 @@ import CoreLocation
 class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     
+    @IBOutlet weak var radiusTextField: UITextField!
+    @IBOutlet weak var afternoonOrEvening: UISegmentedControl!
+    @IBOutlet weak var radiusSlider: UISlider!
+    
+    @IBAction func radiusValueChanged(_ sender: Any) {
+       radiusSlider.setValue(Float(lroundf(radiusSlider.value)), animated: true)
+        radiusTextField.text = "\(radiusSlider.value) KM"
+    }
+    
     @IBAction func scanRadius(_ sender: Any) {
         //get current location
         getLongitudeAndLatitude()
+        let radiusInMeters = radiusSlider.value / 1000
+        let time = afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex)
+        //TODO: API Call om evenementen op te halen en mee te sturen en dan naar volgende scherm.
         
     }
     override func viewDidLoad() {

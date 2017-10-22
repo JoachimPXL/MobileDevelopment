@@ -143,12 +143,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" value="20" minValue="5" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="b2d-hf-ypf">
+                            <slider opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" value="20" minValue="5" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="b2d-hf-ypf">
                                 <rect key="frame" x="28" y="528" width="181" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" selected="YES"/>
                                 </accessibility>
+                                <connections>
+                                    <action selector="radiusValueChanged:" destination="4b1-Ht-XWM" eventType="valueChanged" id="XiY-CT-69x"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWO-au-aB8">
                                 <rect key="frame" x="260" y="517" width="91" height="40"/>
@@ -169,7 +172,7 @@
                                 </segments>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20 KM" borderStyle="roundedRect" placeholder="Amount of KM" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="e9a-cR-MC8">
-                                <rect key="frame" x="269" y="585" width="72" height="30"/>
+                                <rect key="frame" x="249" y="585" width="126" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <nil key="textColor"/>
@@ -184,6 +187,11 @@
                         <color key="backgroundColor" red="0.92869575777202074" green="0.92869575777202074" blue="0.92869575777202074" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="5Ce-O6-cjg"/>
                     </view>
+                    <connections>
+                        <outlet property="afternoonOrEvening" destination="a3m-y6-AzJ" id="Bdj-dQ-A9t"/>
+                        <outlet property="radiusSlider" destination="b2d-hf-ypf" id="gPq-Nc-n2f"/>
+                        <outlet property="radiusTextField" destination="e9a-cR-MC8" id="dWQ-xm-cjE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-kf-sbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
