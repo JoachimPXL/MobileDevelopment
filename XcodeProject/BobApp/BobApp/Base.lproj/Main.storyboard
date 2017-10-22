@@ -174,7 +174,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pinpoint" translatesAutoresizingMaskIntoConstraints="NO" id="TXr-uZ-uHb">
-                                <rect key="frame" x="189" y="179" width="18" height="28"/>
+                                <rect key="frame" x="183" y="179" width="24" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

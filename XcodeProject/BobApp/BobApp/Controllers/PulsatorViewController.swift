@@ -13,8 +13,23 @@ class PulsatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startPulsator()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewDidAppear(_ animated:Bool) {
+        super.viewDidAppear(false)
+        let pulsator = Pulsator()
+        pulsator.position = CGPoint(x: 200, y: 200)
+        pulsator.numPulse = 2
+        pulsator.radius = 240
+        pulsator.backgroundColor = UIColor(red:1, green:0, blue: 0, alpha:1).cgColor
+        pulsator.animationDuration = 3
+        pulsator.pulseInterval = 1
+        
+        view.layer.addSublayer(pulsator)
+        pulsator.start()
     }
     
     override func didReceiveMemoryWarning() {
@@ -22,16 +37,5 @@ class PulsatorViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func startPulsator() {
-        let pulsator = Pulsator()
-        pulsator.position = CGPoint(x: 200, y: 200)
-        pulsator.numPulse = 3
-        pulsator.radius = 240
-        pulsator.backgroundColor = UIColor(red:1, green:0, blue: 0, alpha:1).cgColor
-        pulsator.animationDuration = 3
-        pulsator.pulseInterval = 2
-        
-        view.layer.addSublayer(pulsator)
-        pulsator.start()
-    }
+    
 }

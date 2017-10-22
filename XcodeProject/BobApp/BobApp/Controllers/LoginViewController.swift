@@ -15,11 +15,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    var fbLoginSuccess = false
     
-    @IBAction func registerEvent(_ sender: UIButton) {
-        //let newUser = User(email: emailTextField.text, password: passwordTextField.text)
-        navigateToNextPage()
-    }
+    //MARK: override methods.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +28,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         if(FBSDKAccessToken.current() != nil) {
             os_log("Token is not nil")
-            navigateToNextPage()
         } else {
-            loginButton.delegate = self
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+            loginButton.delegate = self
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (FBSDKAccessToken.current() != nil && fbLoginSuccess == true)
+        {
+            navigateToNextPage()
         }
     }
     
@@ -42,8 +46,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func registerEvent(_ sender: UIButton) {
+        //let newUser = User(email: emailTextField.text, password: passwordTextField.text)
+        navigateToNextPage()
+    }
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error:Error) {
-        
         if(error != nil) {
             //process error
             print(error.localizedDescription)
@@ -55,12 +63,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             if result.token != nil
             {
-                //Get user access token
-                let token:FBSDKAccessToken = result.token
-                
-                print("Token = \(FBSDKAccessToken.current().tokenString)")
-                print("User ID = \(FBSDKAccessToken.current().userID)")
-                navigateToNextPage()
+                fbLoginSuccess = true
+                if result.grantedPermissions.contains("email") {
+                    print("Token = \(FBSDKAccessToken.current().tokenString)")
+                    print("User ID = \(FBSDKAccessToken.current().userID)")
+                } else {
+                    //fbLoginSuccess = false
+                }
             }
         }
     }
@@ -70,13 +79,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func navigateToNextPage() {
-        self.performSegue(withIdentifier: "loginWithFbIdentifier", sender: self)
+        self.performSegue(withIdentifier: "loginWithFbIdentifier", sender: nil)
     }
     
     @objc
     func hideKeyboard() {
         view.endEditing(true)
     }
-
-    
 }
