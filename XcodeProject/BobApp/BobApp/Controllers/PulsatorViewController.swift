@@ -7,13 +7,22 @@
 //
 
 import Foundation
-
 import Pulsator
 
 class PulsatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startPulsator()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func startPulsator() {
         let pulsator = Pulsator()
         pulsator.position = CGPoint(x: 200, y: 200)
         pulsator.numPulse = 3
@@ -24,13 +33,5 @@ class PulsatorViewController: UIViewController {
         
         view.layer.addSublayer(pulsator)
         pulsator.start()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 }

@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
+import os.log
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
@@ -17,13 +18,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func registerEvent(_ sender: UIButton) {
         //let newUser = User(email: emailTextField.text, password: passwordTextField.text)
+        navigateToNextPage()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(FBSDKAccessToken.current() == nil) {
-            
+        //When someone taps in the app while typing (not in keyboard), the keyboard gets cancelled
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+
+        if(FBSDKAccessToken.current() != nil) {
+            os_log("Token is not nil")
+            navigateToNextPage()
         } else {
             loginButton.delegate = self
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
@@ -46,15 +53,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             //handle cancellations
         }
         else {
-            if let userToken = result.token
+            if result.token != nil
             {
                 //Get user access token
                 let token:FBSDKAccessToken = result.token
                 
                 print("Token = \(FBSDKAccessToken.current().tokenString)")
                 print("User ID = \(FBSDKAccessToken.current().userID)")
-                
-                
+                navigateToNextPage()
             }
         }
     }
@@ -63,26 +69,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("Logout")
     }
     
-    func returnUserData()
-    {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                print("Error: \(error)")
-            }
-            else
-            {
-                print("fetched user: \(result)")
-               
-                //let userName : NSString = result.valueForKey("name") as! NSString
-                //print("User Name is: \(userName)")
-                //let userEmail : NSString = result.valueForKey("email") as! NSString
-                //print("User Email is: \(userEmail)")
-            }
-        })
+    func navigateToNextPage() {
+        self.performSegue(withIdentifier: "loginWithFbIdentifier", sender: self)
     }
+    
+    @objc
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
+
     
 }

@@ -128,6 +128,7 @@
                         <outlet property="emailTextField" destination="uGc-ke-gLD" id="67S-P1-JHh"/>
                         <outlet property="loginButton" destination="V5S-Ag-Oo2" id="gHE-55-xEk"/>
                         <outlet property="passwordTextField" destination="yRs-D8-nCd" id="dfP-mU-Afq"/>
+                        <segue destination="4b1-Ht-XWM" kind="show" identifier="loginWithFbIdentifier" id="Z4W-Cr-UmX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

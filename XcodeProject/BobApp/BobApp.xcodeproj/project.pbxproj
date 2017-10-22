@@ -70,6 +70,7 @@
 		AA9837001F86B088002AED1B /* BobAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BobAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9837041F86B088002AED1B /* BobAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobAppUITests.swift; sourceTree = "<group>"; };
 		AA9837061F86B088002AED1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AACD6F0C1F9CB6CA00ACA9D4 /* BobApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BobApp.entitlements; sourceTree = "<group>"; };
 		AAE7F0E81F9952C500AB320C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFDF44FBA350029F4B12CD35 /* Pods-BobApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BobApp/Pods-BobApp.release.xcconfig"; sourceTree = "<group>"; };
 		B5B9F78E333113E91A19E91E /* Pods_BobApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BobApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +151,7 @@
 		AA9836E31F86B087002AED1B /* BobApp */ = {
 			isa = PBXGroup;
 			children = (
+				AACD6F0C1F9CB6CA00ACA9D4 /* BobApp.entitlements */,
 				AAE7F0EA1F9952F500AB320C /* Controllers */,
 				AAE7F0E51F9951B900AB320C /* DomainClasses */,
 				AA9836E41F86B087002AED1B /* AppDelegate.swift */,
@@ -278,6 +280,11 @@
 					AA9836E01F86B087002AED1B = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					AA9836F41F86B088002AED1B = {
 						CreatedOnToolsVersion = 9.0;
@@ -582,6 +589,7 @@
 			baseConfigurationReference = A7EBAC871E1E8BB3D31927F4 /* Pods-BobApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BobApp/BobApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YM7625AMRZ;
 				INFOPLIST_FILE = BobApp/Info.plist;
@@ -599,6 +607,7 @@
 			baseConfigurationReference = AFDF44FBA350029F4B12CD35 /* Pods-BobApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BobApp/BobApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YM7625AMRZ;
 				INFOPLIST_FILE = BobApp/Info.plist;
