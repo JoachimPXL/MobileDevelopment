@@ -365,10 +365,10 @@
             </objects>
             <point key="canvasLocation" x="2309.5999999999999" y="122.78860569715144"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="hm1-iL-GXQ">
             <objects>
-                <viewController id="BTi-SQ-cHE" sceneMemberID="viewController">
+                <viewController id="BTi-SQ-cHE" customClass="DetailViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4OF-QA-sNS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -449,6 +449,7 @@
                                     <color key="titleColor" red="1" green="0.99710999850000004" blue="0.99481380720000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
+                                    <action selector="openEventLinkViaFbApp:" destination="BTi-SQ-cHE" eventType="touchUpInside" id="Kr2-gj-vmx"/>
                                     <action selector="registerEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GOx-B2-CSi"/>
                                 </connections>
                             </button>
