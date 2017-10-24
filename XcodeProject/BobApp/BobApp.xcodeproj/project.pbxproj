@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4122454166EACED3F7B3530F /* Pods_BobApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9F78E333113E91A19E91E /* Pods_BobApp.framework */; };
+		41437D101F9DDBD90069F068 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41437D0F1F9DDBD90069F068 /* Event.swift */; };
+		41437D121F9DDD070069F068 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41437D111F9DDD070069F068 /* EventTableViewCell.swift */; };
 		AA26819C1F95F1DD00BBAA3D /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A31F95F1DD00BBAA3D /* FacebookCore.framework */; };
 		AA26819D1F95F1DD00BBAA3D /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A41F95F1DD00BBAA3D /* FacebookLogin.framework */; };
 		AA26819E1F95F1DD00BBAA3D /* FacebookShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A51F95F1DD00BBAA3D /* FacebookShare.framework */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41437D0F1F9DDBD90069F068 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		41437D111F9DDD070069F068 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		A7EBAC871E1E8BB3D31927F4 /* Pods-BobApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BobApp/Pods-BobApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA26819A1F95F15700BBAA3D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		AA26819B1F95F15700BBAA3D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
@@ -155,10 +159,12 @@
 				AAE7F0EA1F9952F500AB320C /* Controllers */,
 				AAE7F0E51F9951B900AB320C /* DomainClasses */,
 				AA9836E41F86B087002AED1B /* AppDelegate.swift */,
+				41437D111F9DDD070069F068 /* EventTableViewCell.swift */,
 				AA9836E81F86B087002AED1B /* Main.storyboard */,
 				AA9836EB1F86B087002AED1B /* Assets.xcassets */,
 				AA9836ED1F86B087002AED1B /* LaunchScreen.storyboard */,
 				AA9836F01F86B087002AED1B /* Info.plist */,
+				41437D0F1F9DDBD90069F068 /* Event.swift */,
 			);
 			path = BobApp;
 			sourceTree = "<group>";
@@ -422,6 +428,8 @@
 				AA9836E71F86B087002AED1B /* ViewController.swift in Sources */,
 				AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */,
 				AAE7F0E91F9952C500AB320C /* User.swift in Sources */,
+				41437D121F9DDD070069F068 /* EventTableViewCell.swift in Sources */,
+				41437D101F9DDBD90069F068 /* Event.swift in Sources */,
 				AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,7 +599,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BobApp/BobApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YM7625AMRZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BobApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = be.pxl.BobApp;
@@ -609,7 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BobApp/BobApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YM7625AMRZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BobApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = be.pxl.BobApp;
