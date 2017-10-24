@@ -64,7 +64,7 @@
         <!--Pulsator View Controller-->
         <scene sceneID="o2q-aV-XPk">
             <objects>
-                <viewController id="4b1-Ht-XWM" customClass="PulsatorViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PulsatorViewController" id="4b1-Ht-XWM" customClass="PulsatorViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NEB-G2-477">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

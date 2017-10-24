@@ -61,11 +61,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if result.grantedPermissions.contains("email") {
                     self.keychain.set(FBSDKAccessToken.current().tokenString, forKey: "accessToken")
                     self.keychain.set(FBSDKAccessToken.current().userID, forKey: "userId")
-                    print(self.keychain.get("accessToken"))
+                    //print(self.keychain.get("accessToken"))
                 } else {
                     fbLoginSuccess = false
                     self.keychain.delete("accessToken")
                     self.keychain.delete("userId")
+                    self.keychain.clear()
                 }
             }
         }
@@ -74,7 +75,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Logout")
     }
-    
+    override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
+        if (segue.identifier == "loginWithFbIdentifier") {
+            let pulsatorViewController = segue!.destination as! PulsatorViewController;
+            pulsatorViewController.keychain = self.keychain
+        }
+    }
     func navigateToNextPage() {
         self.performSegue(withIdentifier: "loginWithFbIdentifier", sender: nil)
     }

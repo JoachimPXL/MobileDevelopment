@@ -9,9 +9,11 @@
 import Foundation
 import Pulsator
 import CoreLocation
+import KeychainSwift
 
 class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
+    var keychain = KeychainSwift()
     
     @IBOutlet weak var radiusTextField: UITextField!
     @IBOutlet weak var afternoonOrEvening: UISegmentedControl!
@@ -24,21 +26,28 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func scanRadius(_ sender: Any) {
         //get current location
-        getLongitudeAndLatitude()
-        let radiusInMeters = radiusSlider.value / 1000
+        let longitude = getLongitude()
+        let latitude = getLatitude()
+        let radiusInMeters = radiusSlider.value * 1000
         let time = afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex)
-        //TODO: API Call om evenementen op te halen en mee te sturen en dan naar volgende scherm.
+        //keychain.get("accessToken") //OPVRAGEN VAN ACCESSTOKEN
+        
+        print(longitude)
+        print(latitude)
+        print(time)
+        print(radiusInMeters)
+        print(keychain.get("accessToken"))
+        //TODO: API Call om evenementen op te halen en mee te sturen en dan naar volgende scherm. VOOR ANDRES
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         //When someone taps in the app while typing (not in keyboard), the keyboard gets cancelled
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
-        
-        //self.locationManager.requestAlwaysAuthorization()
+
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -67,10 +76,16 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func getLongitudeAndLatitude() {
+    func getLongitude() -> Any! {
         let locValue = locationManager.location?.coordinate
-        
-        print("locations = \(locValue?.latitude) \(locValue?.longitude)")
+        //print("locations = \(locValue?.latitude) \(locValue?.longitude)")
+        return locValue?.longitude
+    }
+    
+    func getLatitude() -> Any! {
+        let locValue = locationManager.location?.coordinate
+        //print("locations = \(locValue?.latitude) \(locValue?.longitude)")
+        return locValue?.latitude
     }
     
     @objc
