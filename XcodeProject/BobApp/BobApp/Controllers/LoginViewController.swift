@@ -10,12 +10,12 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import os.log
+import KeychainSwift
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
     var fbLoginSuccess = false
+    private let keychain = KeychainSwift()
     
     //MARK: override methods.
     
@@ -46,11 +46,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func registerEvent(_ sender: UIButton) {
-        //let newUser = User(email: emailTextField.text, password: passwordTextField.text)
-        navigateToNextPage()
-    }
-    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error:Error) {
         if(error != nil) {
             //process error
@@ -65,10 +60,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             {
                 fbLoginSuccess = true
                 if result.grantedPermissions.contains("email") {
-                    print("Token = \(FBSDKAccessToken.current().tokenString)")
-                    print("User ID = \(FBSDKAccessToken.current().userID)")
+                    self.keychain.set(FBSDKAccessToken.current().tokenString, forKey: "accessToken")
+                    self.keychain.set(FBSDKAccessToken.current().userID, forKey: "userId")
+                    print(self.keychain.get("accessToken"))
                 } else {
-                    //fbLoginSuccess = false
+                    fbLoginSuccess = false
+                    self.keychain.delete("accessToken")
+                    self.keychain.delete("userId")
                 }
             }
         }
