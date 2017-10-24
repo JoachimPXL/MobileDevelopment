@@ -18,15 +18,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8f-Pb-g3X">
-                                <rect key="frame" x="6" y="50" width="363" height="21"/>
+                                <rect key="frame" x="16" y="30" width="343" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="aYA-6W-Cq2"/>
-                                    <constraint firstAttribute="width" constant="363" id="jTw-iB-dNX"/>
+                                    <constraint firstAttribute="height" constant="30" id="dEc-MA-iBO"/>
+                                    <constraint firstAttribute="width" constant="343" id="uNO-Mh-LMV"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Sign in to use the BobApp">
                                         <attributes>
-                                            <font key="NSFont" size="24" name="CourierNewPSMT"/>
+                                            <font key="NSFont" size="22" name="CourierNewPSMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -35,23 +35,20 @@
                                 <color key="shadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5S-Ag-Oo2" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="42" y="189" width="290" height="59"/>
+                                <rect key="frame" x="42" y="310" width="290" height="53"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="5OR-dJ-Qej"/>
-                                    <constraint firstAttribute="width" constant="290" id="w0T-vG-XXk"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92856874372158194" green="0.92380685272813778" blue="0.93333063471502586" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.11449059518630089" green="0.036882206784723315" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V5S-Ag-Oo2" secondAttribute="trailing" constant="43" id="6yd-of-NWB"/>
-                            <constraint firstItem="V5S-Ag-Oo2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="Ebd-S9-u8g"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H8f-Pb-g3X" secondAttribute="trailing" constant="6" id="I4B-8Q-XGb"/>
-                            <constraint firstItem="V5S-Ag-Oo2" firstAttribute="top" secondItem="H8f-Pb-g3X" secondAttribute="bottom" constant="118" id="S78-Lw-olP"/>
-                            <constraint firstItem="H8f-Pb-g3X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="hv7-bb-jnP"/>
-                            <constraint firstItem="H8f-Pb-g3X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="zXQ-g3-o4B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V5S-Ag-Oo2" secondAttribute="trailing" constant="43" id="87I-oz-HAn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V5S-Ag-Oo2" secondAttribute="bottom" constant="304" id="AgU-yY-u1c"/>
+                            <constraint firstItem="V5S-Ag-Oo2" firstAttribute="top" secondItem="H8f-Pb-g3X" secondAttribute="bottom" constant="250" id="GRQ-M9-nq3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H8f-Pb-g3X" secondAttribute="trailing" constant="16" id="NKL-Un-3RF"/>
+                            <constraint firstItem="H8f-Pb-g3X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="iKp-I1-tyb"/>
+                            <constraint firstItem="H8f-Pb-g3X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wdq-Pj-GbE"/>
+                            <constraint firstItem="V5S-Ag-Oo2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="x6b-Nh-xPo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -101,7 +98,7 @@
                                 </segments>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20 KM" borderStyle="roundedRect" placeholder="Amount of KM" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="e9a-cR-MC8">
-                                <rect key="frame" x="249" y="585" width="126" height="30"/>
+                                <rect key="frame" x="249" y="585" width="115" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <nil key="textColor"/>
