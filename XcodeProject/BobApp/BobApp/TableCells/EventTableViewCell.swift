@@ -9,11 +9,8 @@
 import UIKit
 
 class EventTableViewCell: UITableViewCell {
-
     
-//    properties
-    
-    
+    //   MARK: properties
     
     
     override func awakeFromNib() {

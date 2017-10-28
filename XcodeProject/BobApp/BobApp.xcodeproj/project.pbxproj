@@ -18,6 +18,9 @@
 		AA2681A11F95F1DD00BBAA3D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A81F95F1DD00BBAA3D /* FBSDKShareKit.framework */; };
 		AA2681A21F95F1DD00BBAA3D /* Pulsator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A91F95F1DD00BBAA3D /* Pulsator.framework */; };
 		AA2681AB1F95FF1600BBAA3D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */; };
+		AA448AE41FA13DB400AE37F2 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA448AE31FA13DB400AE37F2 /* Vehicle.swift */; };
+		AA448AE71FA13FF000AE37F2 /* VehicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA448AE61FA13FF000AE37F2 /* VehicleTableViewCell.swift */; };
+		AA448AEB1FA140E200AE37F2 /* VehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA448AEA1FA140E200AE37F2 /* VehicleTableViewController.swift */; };
 		AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */; };
 		AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9836E41F86B087002AED1B /* AppDelegate.swift */; };
 		AA9836E71F86B087002AED1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9836E61F86B087002AED1B /* ViewController.swift */; };
@@ -61,6 +64,9 @@
 		AA2681A81F95F1DD00BBAA3D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2681A91F95F1DD00BBAA3D /* Pulsator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pulsator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AA448AE31FA13DB400AE37F2 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		AA448AE61FA13FF000AE37F2 /* VehicleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTableViewCell.swift; sourceTree = "<group>"; };
+		AA448AEA1FA140E200AE37F2 /* VehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTableViewController.swift; sourceTree = "<group>"; };
 		AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsatorViewController.swift; sourceTree = "<group>"; };
 		AA9836E11F86B087002AED1B /* BobApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BobApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9836E41F86B087002AED1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA448AE51FA13FCB00AE37F2 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				41437D111F9DDD070069F068 /* EventTableViewCell.swift */,
+				AA448AE61FA13FF000AE37F2 /* VehicleTableViewCell.swift */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		AA448AE91FA140CD00AE37F2 /* TableControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA448AEA1FA140E200AE37F2 /* VehicleTableViewController.swift */,
+			);
+			path = TableControllers;
+			sourceTree = "<group>";
+		};
 		AA9836D81F86B087002AED1B = {
 			isa = PBXGroup;
 			children = (
@@ -157,11 +180,12 @@
 		AA9836E31F86B087002AED1B /* BobApp */ = {
 			isa = PBXGroup;
 			children = (
+				AA448AE91FA140CD00AE37F2 /* TableControllers */,
+				AA448AE51FA13FCB00AE37F2 /* TableCells */,
 				AACD6F0C1F9CB6CA00ACA9D4 /* BobApp.entitlements */,
 				AAE7F0EA1F9952F500AB320C /* Controllers */,
 				AAE7F0E51F9951B900AB320C /* DomainClasses */,
 				AA9836E41F86B087002AED1B /* AppDelegate.swift */,
-				41437D111F9DDD070069F068 /* EventTableViewCell.swift */,
 				AA9836E81F86B087002AED1B /* Main.storyboard */,
 				AA9836EB1F86B087002AED1B /* Assets.xcassets */,
 				AA9836ED1F86B087002AED1B /* LaunchScreen.storyboard */,
@@ -193,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				AAE7F0E81F9952C500AB320C /* User.swift */,
+				AA448AE31FA13DB400AE37F2 /* Vehicle.swift */,
 			);
 			path = DomainClasses;
 			sourceTree = "<group>";
@@ -429,12 +454,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA448AE41FA13DB400AE37F2 /* Vehicle.swift in Sources */,
 				AA2681AB1F95FF1600BBAA3D /* LoginViewController.swift in Sources */,
 				AA9836E71F86B087002AED1B /* ViewController.swift in Sources */,
 				AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */,
 				AAE7F0E91F9952C500AB320C /* User.swift in Sources */,
 				41437D121F9DDD070069F068 /* EventTableViewCell.swift in Sources */,
+				AA448AE71FA13FF000AE37F2 /* VehicleTableViewCell.swift in Sources */,
 				41437D101F9DDBD90069F068 /* Event.swift in Sources */,
+				AA448AEB1FA140E200AE37F2 /* VehicleTableViewController.swift in Sources */,
 				AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */,
 				AAC15DFB1F9FE20200BBC830 /* DetailViewController.swift in Sources */,
 			);
