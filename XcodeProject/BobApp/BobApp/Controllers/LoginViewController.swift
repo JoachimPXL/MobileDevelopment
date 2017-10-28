@@ -15,6 +15,7 @@ import KeychainSwift
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var fbLoginSuccess = false
+    @IBOutlet weak var signInLabel: UILabel!
     private let keychain = KeychainSwift()
     
     //MARK: override methods.
@@ -26,8 +27,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.addGestureRecognizer(tapGesture)
 
         if(FBSDKAccessToken.current() != nil) {
-            os_log("Token is not nil")
+            signInLabel.text = ""
         } else {
+            signInLabel.text = "Sign in to use the BobApp"
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
             loginButton.delegate = self
         }
@@ -61,24 +63,35 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if result.grantedPermissions.contains("email") {
                     self.keychain.set(FBSDKAccessToken.current().tokenString, forKey: "accessToken")
                     self.keychain.set(FBSDKAccessToken.current().userID, forKey: "userId")
-                    //print(self.keychain.get("accessToken"))
+                    signInLabel.text = ""
                 } else {
                     fbLoginSuccess = false
                     self.keychain.delete("accessToken")
                     self.keychain.delete("userId")
                     self.keychain.clear()
+                    signInLabel.text = "Sign in to use the BobApp"
                 }
             }
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("Logout")
+        fbLoginSuccess = false
+        self.keychain.delete("accessToken")
+        self.keychain.delete("userId")
+        self.keychain.clear()
+        signInLabel.text = "Sign in to use the BobApp"
+       exit(1)
     }
+    
     override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
         if (segue.identifier == "loginWithFbIdentifier") {
-            let pulsatorViewController = segue!.destination as! PulsatorViewController;
-            pulsatorViewController.keychain = self.keychain
+            if let navigationViewController = segue.destination as? UINavigationController {
+                let pulsatorViewController = navigationViewController.topViewController as! PulsatorViewController;
+                pulsatorViewController.keychain = self.keychain
+                
+            }
+           
         }
     }
     func navigateToNextPage() {
