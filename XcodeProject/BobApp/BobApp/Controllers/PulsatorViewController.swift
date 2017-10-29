@@ -25,21 +25,49 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func scanRadius(_ sender: Any) {
-        //get current location
+            print(getLongitude())
+            print(getLatitude())
+            print(afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex))
+            print(radiusSlider.value * 1000)
+            print(keychain.get("accessToken"))
+            
+        do {
+            try getEventsFromApi()
+        } catch {
+            let alertController = UIAlertController(title: "Something went wrong", message:
+                "Please try again and make sure you fill in everything that is asked. Also make sure your location settings are configured the right way.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    enum MyError: Error{
+        case ApiCallFailedError
+    }
+    
+    func getEventsFromApi() throws -> MyError {
         let longitude = getLongitude()
         let latitude = getLatitude()
         let radiusInMeters = radiusSlider.value * 1000
         let time = afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex)
-        //keychain.get("accessToken") //OPVRAGEN VAN ACCESSTOKEN
+        let accessToken = keychain.get("accessToken")
         
-        print(longitude)
-        print(latitude)
-        print(time)
-        print(radiusInMeters)
-        print(keychain.get("accessToken"))
+        
         //TODO: API Call om evenementen op te halen en mee te sturen en dan naar volgende scherm. VOOR ANDRES
-        
+        if(longitude != nil && latitude != nil && radiusInMeters != nil && time != nil && accessToken != nil) {
+            let alertController = UIAlertController(title: "Events", message:
+                "We located 0 events", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Checkout events", style: UIAlertActionStyle.destructive,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            throw MyError.ApiCallFailedError
+        }
+        return MyError.ApiCallFailedError
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -60,7 +88,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(false)
             let pulsator = Pulsator()
-            pulsator.position = CGPoint(x: 200, y: 200)
+            pulsator.position = CGPoint(x: 175, y: 223)
             pulsator.numPulse = 2
             pulsator.radius = 240
             pulsator.backgroundColor = UIColor(red:1, green:0, blue: 0, alpha:1).cgColor

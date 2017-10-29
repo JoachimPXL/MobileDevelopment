@@ -63,7 +63,22 @@
             </objects>
             <point key="canvasLocation" x="-663" y="-126"/>
         </scene>
-        <!--Pulsator View Controller-->
+        <!--View Controller-->
+        <scene sceneID="ZeG-1Y-q6c">
+            <objects>
+                <viewController id="Oq6-tv-Mev" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LX0-y3-sQb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="AXK-aP-x0z"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LsF-Pw-8oR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-661" y="577"/>
+        </scene>
+        <!--Find events-->
         <scene sceneID="o2q-aV-XPk">
             <objects>
                 <viewController storyboardIdentifier="PulsatorViewController" id="4b1-Ht-XWM" customClass="PulsatorViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,14 +124,15 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pinpoint" translatesAutoresizingMaskIntoConstraints="NO" id="TXr-uZ-uHb">
-                                <rect key="frame" x="188" y="171" width="46" height="34"/>
+                                <rect key="frame" x="164" y="197" width="46" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92869575777202074" green="0.92869575777202074" blue="0.92869575777202074" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="5Ce-O6-cjg"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KOU-HW-auK">
+                    <navigationItem key="navigationItem" title="Find events" id="KOU-HW-auK">
+                        <barButtonItem key="backBarButtonItem" title="Back to the scanner" id="7kI-ja-b5X"/>
                         <barButtonItem key="leftBarButtonItem" image="Logout" id="65E-co-JF8">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="push" id="L3H-QQ-u3U"/>
@@ -365,7 +381,7 @@
                                 <segue destination="4b1-Ht-XWM" kind="push" id="TZg-7J-wdp"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Vehicles" id="ldO-mi-Nr4">
+                        <barButtonItem key="rightBarButtonItem" title="Bobs" id="ldO-mi-Nr4">
                             <connections>
                                 <segue destination="FaF-cX-Zmh" kind="show" id="r9F-s8-Dqe"/>
                             </connections>
@@ -376,7 +392,7 @@
             </objects>
             <point key="canvasLocation" x="977" y="-126"/>
         </scene>
-        <!--Vehicles-->
+        <!--Bobs-->
         <scene sceneID="G3L-O7-9JW">
             <objects>
                 <tableViewController id="FaF-cX-Zmh" customClass="VehicleTableViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -420,10 +436,10 @@
                             <outlet property="delegate" destination="FaF-cX-Zmh" id="l1i-iP-c7j"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Vehicles" id="GpM-sw-XOI">
+                    <navigationItem key="navigationItem" title="Bobs" id="GpM-sw-XOI">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="Wzf-Jl-ReE">
                             <connections>
-                                <segue destination="4b1-Ht-XWM" kind="push" id="5Uf-W5-rDg"/>
+                                <segue destination="VTL-uP-Pju" kind="push" id="Eo5-3N-snX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zkQ-RG-Xa1">
@@ -435,7 +451,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kl5-tH-PJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="583"/>
+            <point key="canvasLocation" x="1689" y="582"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="hm1-iL-GXQ">
@@ -737,4 +753,5 @@
         <segue reference="sMw-wT-0e3"/>
         <segue reference="rgY-gh-U9x"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
