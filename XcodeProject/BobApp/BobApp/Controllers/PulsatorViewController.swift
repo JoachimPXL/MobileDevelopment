@@ -25,12 +25,12 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func scanRadius(_ sender: Any) {
-            print(getLongitude())
-            print(getLatitude())
-            print(afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex))
-            print(radiusSlider.value * 1000)
-            print(keychain.get("accessToken"))
-            
+//            print(getLongitude())
+//            print(getLatitude())
+//            print(afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex))
+//            print(radiusSlider.value * 1000)
+//            print(keychain.get("accessToken"))
+        
         do {
             try getEventsFromApi()
         } catch {
@@ -53,9 +53,8 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         let time = afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex)
         let accessToken = keychain.get("accessToken")
         
-        
         //TODO: API Call om evenementen op te halen en mee te sturen en dan naar volgende scherm. VOOR ANDRES
-        if(longitude != nil && latitude != nil && radiusInMeters != nil && time != nil && accessToken != nil) {
+        if(longitude != nil && latitude != nil && radiusInMeters != 0 && time != nil && accessToken != nil) {
             let alertController = UIAlertController(title: "Events", message:
                 "We located 0 events", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Checkout events", style: UIAlertActionStyle.destructive,handler: nil))
@@ -121,8 +120,8 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         view.endEditing(true)
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let _:CLLocationCoordinate2D = manager.location!.coordinate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

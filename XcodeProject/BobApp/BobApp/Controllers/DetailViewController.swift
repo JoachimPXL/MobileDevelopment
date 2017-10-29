@@ -7,21 +7,20 @@
 //
 
 import UIKit
-//import FacebookLogin
 
-class DetailViewController: UIViewController{
+class DetailViewController: UIViewController  {
     
     @IBAction func openEventLinkViaFbApp(_ sender: Any) {
         //facebookapp openen indien deze geïnstalleerd is en anders browser naar event. //WERKT enkel in safari-browser, niet in APP.
-        var fbURLWeb: NSURL = NSURL(string: "https://www.facebook.com/degroeneletters/")!
-        var fbURLID: NSURL = NSURL(string: "fb://profile/1795876386")! //\(keychain.get("userId"))
+        let fbURLWeb: NSURL = NSURL(string: "https://www.facebook.com/degroeneletters/")!
+        let fbURLID: NSURL = NSURL(string: "fb://profile/1795876386")! //\(keychain.get("userId"))
         
         if(UIApplication.shared.canOpenURL(fbURLID as URL)){
             // FB installed
-            UIApplication.shared.openURL(fbURLID as URL)
+            UIApplication.shared.open(fbURLID as URL, options: [:], completionHandler: nil)
         } else {
             // FB is not installed, open in safari
-            UIApplication.shared.openURL(fbURLWeb as URL)
+            UIApplication.shared.open(fbURLWeb as URL, options: [:], completionHandler: nil)
         }
     }
     override func viewDidLoad() {

@@ -10,20 +10,11 @@ import UIKit
 
 class VehicleTableViewController: UITableViewController {
     //MARK: Properties
-    
-    var vehicles = [Vehicle]()
-    
-    private func loadSampleMeals() {
-        
-        let vehicle1 = Vehicle(name: "AUDI R8")
-        
-        vehicles += [vehicle1]
-    }
+    var vehicles = VehiclesDatabase.instance.getVehicles()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadSampleMeals()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -54,6 +45,8 @@ class VehicleTableViewController: UITableViewController {
         cell.vehicleNameLabel.text = vehicle.name
     
         return cell
-}
+    }
+    
+    
 }
 

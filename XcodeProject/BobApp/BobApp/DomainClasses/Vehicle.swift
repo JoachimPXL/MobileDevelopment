@@ -10,12 +10,13 @@ import UIKit
 
 class Vehicle {
     //MARK: Properties
-    
+    var id: Int64
     var name: String
     
     //MARK: Initialization
     
-    init(name: String) {
+    init(id: Int64, name: String) {
+        self.id = id
         self.name = name
     }
     

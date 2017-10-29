@@ -9,7 +9,6 @@
 import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
-import os.log
 import KeychainSwift
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
@@ -47,13 +46,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error:Error) {
-        if(error != nil) {
-            //process error
-            print(error.localizedDescription)
-            return
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "loginWithFbIdentifier") {
+            if let navigationViewController = segue.destination as? UINavigationController {
+                let pulsatorViewController = navigationViewController.topViewController as! PulsatorViewController;
+                pulsatorViewController.keychain = self.keychain
+            }
         }
-        else if result.isCancelled {
+    }
+    
+    // MARK: methods.
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error:Error) {
+     if result.isCancelled {
             //handle cancellations
         }
         else {
@@ -80,20 +85,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.keychain.delete("accessToken")
         self.keychain.delete("userId")
         self.keychain.clear()
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
         signInLabel.text = "Sign in to use the BobApp"
-       exit(1)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue!, sender: Any?) {
-        if (segue.identifier == "loginWithFbIdentifier") {
-            if let navigationViewController = segue.destination as? UINavigationController {
-                let pulsatorViewController = navigationViewController.topViewController as! PulsatorViewController;
-                pulsatorViewController.keychain = self.keychain
-                
-            }
-           
-        }
-    }
+   
     func navigateToNextPage() {
         self.performSegue(withIdentifier: "loginWithFbIdentifier", sender: nil)
     }
