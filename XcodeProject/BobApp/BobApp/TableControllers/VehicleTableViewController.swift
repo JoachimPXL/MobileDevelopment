@@ -14,12 +14,16 @@ class VehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        vehicles = VehiclesDatabase.instance.getVehicles()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        vehicles = VehiclesDatabase.instance.getVehicles()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,7 +35,6 @@ class VehicleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "VehicleTableViewCell"
         
@@ -41,8 +44,8 @@ class VehicleTableViewController: UITableViewController {
         
         // Fetches the appropriate meal for the data source layout.
         let vehicle = vehicles[indexPath.row]
-        
-        cell.vehicleNameLabel.text = vehicle.name
+        //VehiclesDatabase.instance.deleteVehicle(vid: 1)
+        cell.vehicleNameLabel.text = vehicle.first_name
     
         return cell
     }

@@ -12,21 +12,19 @@ class User {
     
     //Properties
     var email:String
-    var password:String
+    var vehicles:[Vehicle]
     
-    init?(email: String, password: String) {
-        
+    init?(email: String) {
         guard !email.isEmpty else {
             return nil
         }
-        
-        guard !password.isEmpty else {
-            return nil
-        }
-        
         self.email = email
-        self.password = password
+        self.vehicles = []
         
+    }
+    
+    func addVehicle(vehicle:Vehicle) {
+        self.vehicles.append(vehicle)
     }
     
 }

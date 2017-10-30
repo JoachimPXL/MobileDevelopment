@@ -16,7 +16,7 @@ class DetailViewController: UIViewController  {
         let fbURLID: NSURL = NSURL(string: "fb://profile/1795876386")! //\(keychain.get("userId"))
         
         if(UIApplication.shared.canOpenURL(fbURLID as URL)){
-            // FB installed
+            // FB installed()
             UIApplication.shared.open(fbURLID as URL, options: [:], completionHandler: nil)
         } else {
             // FB is not installed, open in safari

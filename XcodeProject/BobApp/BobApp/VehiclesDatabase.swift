@@ -11,10 +11,16 @@ import SQLite
 class VehiclesDatabase {
     static let instance = VehiclesDatabase()
     private let db: Connection?
-    
-    private let vehicles = Table("vehicles")
+    private let vehicles = Table("vehiclesTable")
     private let id = Expression<Int64>("id")
-    private let name = Expression<String>("name")
+    private let first_name = Expression<String>("first_name")
+    private let last_name = Expression<String>("last_name")
+    private let dateOfBirth = Expression<Date>("dateOfBirth")
+    private let meetupLocation = Expression<String>("meetupLocation")
+    private let departureToEvent = Expression<String>("departureToEvent")
+    private let departureAtEvent = Expression<String>("departureAtEvent")
+    private let description = Expression<String>("description")
+    private let phoneNumber = Expression<String>("phoneNumber")
     
     private init() {
         let path = NSSearchPathForDirectoriesInDomains (
@@ -35,7 +41,14 @@ class VehiclesDatabase {
         do {
             try db!.run(vehicles.create(ifNotExists: true) { table in
                 table.column(id, primaryKey: true)
-                table.column(name)
+                table.column(first_name)
+                table.column(last_name)
+                table.column(dateOfBirth)
+                table.column(meetupLocation)
+                table.column(departureToEvent)
+                table.column(departureAtEvent)
+                table.column(description)
+                table.column(phoneNumber)
             })
         } catch {
             print("Unable to create table")
@@ -49,7 +62,14 @@ class VehiclesDatabase {
             for vehicle in try db!.prepare(self.vehicles) {
                 vehicles.append(Vehicle(
                     id: vehicle[id],
-                    name: vehicle[name]))
+                    first_name: vehicle[first_name],
+                    last_name: vehicle[last_name],
+                    dateOfBirth: vehicle[dateOfBirth],
+                    meetupLocation: vehicle[meetupLocation],
+                    departureToEvent: vehicle[departureToEvent],
+                    departureAtEvent: vehicle[departureAtEvent],
+                    description: vehicle[description],
+                    phoneNumber: vehicle[phoneNumber]))
             }
         } catch {
             print("Select failed")
@@ -59,9 +79,11 @@ class VehiclesDatabase {
         
     }
     
-    func addVehicle(vname: String) -> Int64? {
+    func addVehicle(vfirst_name: String, vlast_name: String, vdateOfBirth: Date, vmeetupLocation: String, vdepartureToEvent: String, vdepartureAtEvent: String,
+                    vdescription: String, vphoneNumber: String) -> Int64? {
         do {
-            let insert = vehicles.insert(name <- vname)
+            let insert = vehicles.insert(first_name <- vfirst_name, last_name <- vlast_name, dateOfBirth <- vdateOfBirth, meetupLocation <- vmeetupLocation,
+                                         departureToEvent <- vdepartureToEvent, departureAtEvent <- vdepartureAtEvent, description <- vdescription, phoneNumber <- vdescription)
             let id = try db!.run(insert)
             print(insert.asSQL())
             return id
@@ -86,7 +108,15 @@ class VehiclesDatabase {
         let vehicle = vehicles.filter(id == vid)
         do {
             let update = vehicle.update([
-                name <- newVehicle.name])
+                first_name <- newVehicle.first_name,
+                last_name <- newVehicle.last_name,
+                dateOfBirth <- newVehicle.dateOfBirth,
+                meetupLocation <- newVehicle.meetupLocation,
+                departureToEvent <- newVehicle.departureToEvent,
+                departureAtEvent <- newVehicle.departureAtEvent,
+                description <- newVehicle.description,
+                phoneNumber <- newVehicle.phoneNumber
+                ])
             if try db!.run(update) > 0 {
                 return true
             }
