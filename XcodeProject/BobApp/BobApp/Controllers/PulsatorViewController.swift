@@ -55,6 +55,10 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         
         //TODO: API Call om evenementen op te halen en mee te sturen en dan naar volgende scherm. VOOR ANDRES
         if(longitude != nil && latitude != nil && radiusInMeters != 0 && time != nil && accessToken != nil) {
+            let url = "http://0.0.0.0:3000/events?lat=\(latitude)lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accesToken=\(accessToken)"
+           
+
+            HTTPHandler.getJson(urlString: url, completionHandler: parseDataIntoEvents)
             let alertController = UIAlertController(title: "Events", message:
                 "We located 0 events", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Checkout events", style: UIAlertActionStyle.destructive,handler: nil))
@@ -64,6 +68,19 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
             throw MyError.ApiCallFailedError
         }
         return MyError.ApiCallFailedError
+    }
+    
+    func parseDataIntoEvents(data : Data?) -> Void{
+        
+        if let data = data {
+           let object = JSONParser.parse(data: data)
+            if let object = object {
+                
+            }
+        }
+        
+        
+        
     }
     
     
