@@ -50,6 +50,22 @@ class VehicleTableViewController: UITableViewController {
         return cell
     }
     
-    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // action one
+//        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+//            print("Edit tapped")
+//        })
+//        editAction.backgroundColor = UIColor.blue
+        
+        // action two
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            if let cell = tableView.cellForRow(at: indexPath) as? VehicleTableViewCell {
+                
+            }
+        })
+        deleteAction.backgroundColor = UIColor.red
+        
+        return [deleteAction]
+    }
 }
 

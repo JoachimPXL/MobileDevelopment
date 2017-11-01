@@ -83,7 +83,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -120,13 +119,13 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func getLongitude() -> Any! {
+    func getLongitude() -> Double! {
         let locValue = locationManager.location?.coordinate
         //print("locations = \(locValue?.latitude) \(locValue?.longitude)")
         return locValue?.longitude
     }
     
-    func getLatitude() -> Any! {
+    func getLatitude() -> Double! {
         let locValue = locationManager.location?.coordinate
         //print("locations = \(locValue?.latitude) \(locValue?.longitude)")
         return locValue?.latitude

@@ -26,12 +26,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.addGestureRecognizer(tapGesture)
 
         if(FBSDKAccessToken.current() != nil) {
-            signInLabel.text = ""
+            navigateToNextPage()
         } else {
             signInLabel.text = "Sign in to use the BobApp"
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-            loginButton.delegate = self
         }
+        loginButton.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,6 +88,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
         signInLabel.text = "Sign in to use the BobApp"
+        print("loggedout")
     }
    
     func navigateToNextPage() {
