@@ -20,8 +20,6 @@ class AddVehicleViewController: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBAction func addVehicleButton(_ sender: Any) {
         
         if let id = VehiclesDatabase.instance.addVehicle(
