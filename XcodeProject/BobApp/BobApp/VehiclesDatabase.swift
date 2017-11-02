@@ -83,7 +83,7 @@ class VehiclesDatabase {
                     vdescription: String, vphoneNumber: String) -> Int64? {
         do {
             let insert = vehicles.insert(first_name <- vfirst_name, last_name <- vlast_name, dateOfBirth <- vdateOfBirth, meetupLocation <- vmeetupLocation,
-                                         departureToEvent <- vdepartureToEvent, departureAtEvent <- vdepartureAtEvent, description <- vdescription, phoneNumber <- vdescription)
+                                         departureToEvent <- vdepartureToEvent, departureAtEvent <- vdepartureAtEvent, description <- vdescription, phoneNumber <- vphoneNumber)
             let id = try db!.run(insert)
             print(insert.asSQL())
             return id

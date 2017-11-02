@@ -10,15 +10,17 @@ import UIKit
 
 class VehicleTableViewCell: UITableViewCell {
     //MARK: Properties
-    @IBOutlet weak var vehicleNameLabel: UILabel!
     
-    @IBAction func chooseBob(_ sender: Any) {
-    }
+    @IBOutlet weak var bobFullName: UILabel!
+    @IBOutlet weak var meetupLocation: UILabel!
+    @IBOutlet weak var departureTimeToEvent: UILabel!
+    @IBOutlet weak var departureTimeAtEvent: UILabel!
+    @IBOutlet weak var carDescription: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //vehicleNameLabel.text = "Test"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

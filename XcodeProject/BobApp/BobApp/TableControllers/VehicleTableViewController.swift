@@ -14,7 +14,8 @@ class VehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vehicles = VehiclesDatabase.instance.getVehicles()
+        tableView.reloadData()
+        refreshDataInTableView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -23,7 +24,10 @@ class VehicleTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        vehicles = VehiclesDatabase.instance.getVehicles()
+        super.viewDidAppear(false)
+        tableView.reloadData()
+        refreshDataInTableView()
+        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,7 +49,13 @@ class VehicleTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let vehicle = vehicles[indexPath.row]
         //VehiclesDatabase.instance.deleteVehicle(vid: 1)
-        cell.vehicleNameLabel.text = vehicle.first_name
+        print(vehicle.id)
+        cell.bobFullName.text = vehicle.first_name + " " + vehicle.last_name
+        cell.meetupLocation.text = vehicle.meetupLocation
+        cell.departureTimeToEvent.text = vehicle.departureToEvent
+        cell.departureTimeAtEvent.text = vehicle.departureAtEvent
+        cell.carDescription.text = vehicle.description
+        cell.phoneNumber.text = vehicle.phoneNumber
     
         return cell
     }
@@ -59,13 +69,19 @@ class VehicleTableViewController: UITableViewController {
         
         // action two
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            if let cell = tableView.cellForRow(at: indexPath) as? VehicleTableViewCell {
-                
-            }
+            print("Delete tapped")
+            VehiclesDatabase.instance.deleteVehicle(vid: Int64(indexPath.row + 2))
+            self.refreshDataInTableView()
+            tableView.reloadData()
         })
         deleteAction.backgroundColor = UIColor.red
         
         return [deleteAction]
+    }
+    
+    func refreshDataInTableView() {
+        vehicles = []
+        vehicles = VehiclesDatabase.instance.getVehicles()
     }
 }
 
