@@ -10,6 +10,10 @@ import UIKit
 
 class EventUITableViewCell: UITableViewCell {
 
+    @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var distance: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

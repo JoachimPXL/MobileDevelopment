@@ -21,7 +21,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var radiusTextField: UITextField!
     @IBOutlet weak var afternoonOrEvening: UISegmentedControl!
     @IBOutlet weak var radiusSlider: UISlider!
-    var searchResults: [Event] = []
+    var mappedEvents: [Event] = []
     
     @IBAction func radiusValueChanged(_ sender: Any) {
        radiusSlider.setValue(Float(lroundf(radiusSlider.value)), animated: true)
@@ -37,6 +37,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         
         do {
             try getEventsFromApi()
+            
         } catch {
             let alertController = UIAlertController(title: "Something went wrong", message:
                 "Please try again and make sure you fill in everything that is asked. Also make sure your location settings are configured the right way.", preferredStyle: UIAlertControllerStyle.alert)
@@ -57,7 +58,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         let radiusInMeters: Int! = Int(radiusSlider.value * 1000)
         let time:String! = afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex)
         let accessToken:String! = keychain.get("accessToken")!
-        var mappedEvents: [Event] = []
         //TODO: API Call om evenementen op te halen en mee te sturen en dan naar volgende scherm. VOOR ANDRES
         if(longitude != nil && latitude != nil && radiusInMeters != 0 && time != nil && accessToken != nil) {
          //  let url = "http://0.0.0.0:3000/events?lat=\(latitude)lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accesToken=\(accessToken)"
@@ -83,23 +83,27 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
                             let orgianisator = event["vanue"]["name"].string
                             
                             let e = Event(name: title!, attending: attending!,afstand: distanceInMeters)
-                            mappedEvents.append(e)
+                            self.mappedEvents.append(e)
                         }
+                        
+                        print("array length: ")
+                        print(self.mappedEvents.count)
+                        
                     }
                 }
             }
             
             
-//       var url = "http://0.0.0.0:3000/events?lat=40.710803&lng=-73.964040&distance=100&sort=venue&accessToken=EAACEdEose0cBACIoZAaIdE4y57pF4Ym8U8RF4nIEMYC2UAnZANiek6DWGZCkqWFZCdnEMDCdF9hPraT6D7UvNZBPkeS9ur5qcHPPWkqGO5trVMqg6tR7ZAmG7ZAeOYIVyEE6XoiGK1viDTwhosZB4uozULThBqZA4Ghgu1tUBv4TEESG5HJG4KF2ZA8O5h7mo3alLD2XCQrtQqXAZDZD’"*/
+//                let alertController = UIAlertController(title: "Events", message:
+//                    "We located 0 events", preferredStyle: UIAlertControllerStyle.alert)
+//                alertController.addAction(UIAlertAction(title: "Checkout events", style: UIAlertActionStyle.destructive,handler: nil))
+//
+//                self.present(alertController, animated: true, completion: nil)
            
+            let newViewController = EventTableViewController()
+            newViewController.mappedEvents2 = self.mappedEvents
+            self.navigationController?.pushViewController(newViewController, animated: true)
             
-//            HTTPHandler.getJson(urlString: url, completionHandler: parseDataIntoEvents)
-            
-            let alertController = UIAlertController(title: "Events", message:
-                "We located 0 events", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Checkout events", style: UIAlertActionStyle.destructive,handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
         } else {
             throw MyError.ApiCallFailedError
         }
