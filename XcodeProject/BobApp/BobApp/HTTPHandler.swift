@@ -20,6 +20,7 @@ class HTTPHandler {
                 let httpResponse = response as! HTTPURLResponse
                 let statusCode = httpResponse.statusCode
                 if(statusCode == 200) {
+                    print("**200 STATUS BACK OKt**")
                     completionHandler(data as Data)
                 }
             }else if let error = error {

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4122454166EACED3F7B3530F /* Pods_BobApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9F78E333113E91A19E91E /* Pods_BobApp.framework */; };
-		41437D121F9DDD070069F068 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41437D111F9DDD070069F068 /* EventTableViewCell.swift */; };
+		416966C11FAA3155009923F5 /* EventUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416966C01FAA3155009923F5 /* EventUITableViewCell.swift */; };
 		416EA2EF1FA8ADD400CD6117 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2EE1FA8ADD400CD6117 /* HTTPHandler.swift */; };
 		416EA2F11FA8BA6500CD6117 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2F01FA8BA6500CD6117 /* JSONParser.swift */; };
 		416EA2F31FA8BDF600CD6117 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2F21FA8BDF600CD6117 /* Event.swift */; };
@@ -55,7 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		41437D111F9DDD070069F068 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		416966C01FAA3155009923F5 /* EventUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUITableViewCell.swift; sourceTree = "<group>"; };
 		416EA2EE1FA8ADD400CD6117 /* HTTPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
 		416EA2F01FA8BA6500CD6117 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		416EA2F21FA8BDF600CD6117 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -151,8 +151,8 @@
 		AA448AE51FA13FCB00AE37F2 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
-				41437D111F9DDD070069F068 /* EventTableViewCell.swift */,
 				AA448AE61FA13FF000AE37F2 /* VehicleTableViewCell.swift */,
+				416966C01FAA3155009923F5 /* EventUITableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -403,6 +403,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BobApp/Pods-BobApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -411,9 +412,11 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -422,6 +425,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -476,7 +480,7 @@
 				AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */,
 				AAE7F0E91F9952C500AB320C /* User.swift in Sources */,
 				416EA2F31FA8BDF600CD6117 /* Event.swift in Sources */,
-				41437D121F9DDD070069F068 /* EventTableViewCell.swift in Sources */,
+				416966C11FAA3155009923F5 /* EventUITableViewCell.swift in Sources */,
 				AA448AE71FA13FF000AE37F2 /* VehicleTableViewCell.swift in Sources */,
 				416EA2EF1FA8ADD400CD6117 /* HTTPHandler.swift in Sources */,
 				416EA2F51FA8C77B00CD6117 /* EventDataProcessor.swift in Sources */,

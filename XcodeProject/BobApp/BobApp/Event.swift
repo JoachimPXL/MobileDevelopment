@@ -12,6 +12,8 @@ import Foundation
 class Event {
     
     var name : String
+    var attending: Int
+    var afstand: Double
 //    var link : String
 //    var attending : Int
 //    var description : String
@@ -21,8 +23,10 @@ class Event {
 //    var alt : String
 //
     
-    init(name: String) {
+    init(name: String, attending: Int, afstand:Double) {
         self.name = name;
+        self.attending = attending;
+        self.afstand = afstand;
     }
     
     

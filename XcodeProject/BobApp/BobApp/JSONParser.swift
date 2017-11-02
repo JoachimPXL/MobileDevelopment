@@ -9,6 +9,7 @@
 import Foundation
 class JSONParser {
     static func parse (data: Data) -> [String: AnyObject]? {
+        print("in deze func")
         let options = JSONSerialization.ReadingOptions()
         do {
             let son = try JSONSerialization.jsonObject(with: data, options: options)

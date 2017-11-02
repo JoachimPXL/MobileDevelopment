@@ -5,5 +5,7 @@ target 'BobApp' do
 	pod 'FacebookLogin'
 	pod 'KeychainSwift', '~> 9.0'
 	pod 'SQLite.swift'
+    pod 'SwiftyJSON'
+    pod 'Alamofire', '~> 4.5'
 use_frameworks!
 end

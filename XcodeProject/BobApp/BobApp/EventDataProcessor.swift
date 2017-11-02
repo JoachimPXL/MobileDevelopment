@@ -8,20 +8,5 @@
 
 import Foundation
 
-class EventDataProcessor {
-    static func mapJsonToEvents(object: [String: AnyObject], eventsKey: String) ->
-        [Event] {
-            var mappedEvents: [Event] = []
-            
-            guard let events = object[eventsKey] as? [[String: AnyObject]]  else { return mappedEvents }
-            
-            for event in events {
-                guard let name = event["name"] as? String else { continue }
-                
-                let eventClass = Event(name: name)
-                mappedEvents.append(eventClass)
-            }
-            return mappedEvents
-    }
-}
+
 
