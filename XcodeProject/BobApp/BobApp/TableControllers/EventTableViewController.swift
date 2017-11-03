@@ -22,6 +22,10 @@ class EventTableViewController: UITableViewController {
         print(mappedEvents2.count)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -32,10 +36,10 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "EventUITableViewCell"
+        let cellIdentifier = "EventTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventUITableViewCell  else {
-            fatalError("The dequeued cell is not an instance of EventUITableViewCell.")
+            fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
         
         // Fetches the appropriate meal for the data source layout.

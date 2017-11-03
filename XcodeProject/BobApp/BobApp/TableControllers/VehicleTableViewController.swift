@@ -14,7 +14,6 @@ class VehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
         refreshDataInTableView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,9 +24,7 @@ class VehicleTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        tableView.reloadData()
         refreshDataInTableView()
-        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,13 +58,11 @@ class VehicleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        // action one
-//        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-//            print("Edit tapped")
-//        })
-//        editAction.backgroundColor = UIColor.blue
+       let rideAction = UITableViewRowAction(style: .default, title: "   ", handler: { (action, indexPath) in
+            print("RideWithMe tapped")
+        })
+        rideAction.backgroundColor = UIColor(patternImage:UIImage(named:"inschrijven")!)
         
-        // action two
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             print("Delete tapped")
             VehiclesDatabase.instance.deleteVehicle(vid: Int64(indexPath.row + 2))
@@ -76,12 +71,13 @@ class VehicleTableViewController: UITableViewController {
         })
         deleteAction.backgroundColor = UIColor.red
         
-        return [deleteAction]
+        return [rideAction, deleteAction]
     }
     
     func refreshDataInTableView() {
-        vehicles = []
+        tableView.reloadData()
         vehicles = VehiclesDatabase.instance.getVehicles()
+        tableView.reloadData()
     }
 }
 
