@@ -11,7 +11,6 @@
 		416966C11FAA3155009923F5 /* EventUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416966C01FAA3155009923F5 /* EventUITableViewCell.swift */; };
 		416EA2EF1FA8ADD400CD6117 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2EE1FA8ADD400CD6117 /* HTTPHandler.swift */; };
 		416EA2F11FA8BA6500CD6117 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2F01FA8BA6500CD6117 /* JSONParser.swift */; };
-		416EA2F31FA8BDF600CD6117 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2F21FA8BDF600CD6117 /* Event.swift */; };
 		416EA2F51FA8C77B00CD6117 /* EventDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2F41FA8C77B00CD6117 /* EventDataProcessor.swift */; };
 		AA0059BA1FA628EE00C7076A /* VehiclesDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */; };
 		AA0059BC1FA6314F00C7076A /* AddVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0059BB1FA6314F00C7076A /* AddVehicleViewController.swift */; };
@@ -22,6 +21,8 @@
 		AA2681A21F95F1DD00BBAA3D /* Pulsator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A91F95F1DD00BBAA3D /* Pulsator.framework */; };
 		AA2681AB1F95FF1600BBAA3D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */; };
 		AA2BF4C31FA5234A004D3275 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2BF4C21FA5234A004D3275 /* EventTableViewController.swift */; };
+		AA3B0A4B1FAD237500FD203B /* AddPassengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3B0A4A1FAD237500FD203B /* AddPassengerViewController.swift */; };
+		AA3B0A4F1FAD2B2200FD203B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3B0A4E1FAD2B2200FD203B /* Event.swift */; };
 		AA448AE41FA13DB400AE37F2 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA448AE31FA13DB400AE37F2 /* Vehicle.swift */; };
 		AA448AE71FA13FF000AE37F2 /* VehicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA448AE61FA13FF000AE37F2 /* VehicleTableViewCell.swift */; };
 		AA448AEB1FA140E200AE37F2 /* VehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA448AEA1FA140E200AE37F2 /* VehicleTableViewController.swift */; };
@@ -58,7 +59,6 @@
 		416966C01FAA3155009923F5 /* EventUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUITableViewCell.swift; sourceTree = "<group>"; };
 		416EA2EE1FA8ADD400CD6117 /* HTTPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
 		416EA2F01FA8BA6500CD6117 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
-		416EA2F21FA8BDF600CD6117 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		416EA2F41FA8C77B00CD6117 /* EventDataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataProcessor.swift; sourceTree = "<group>"; };
 		A7EBAC871E1E8BB3D31927F4 /* Pods-BobApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BobApp/Pods-BobApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesDatabase.swift; sourceTree = "<group>"; };
@@ -74,6 +74,8 @@
 		AA2681A91F95F1DD00BBAA3D /* Pulsator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pulsator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AA2BF4C21FA5234A004D3275 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		AA3B0A4A1FAD237500FD203B /* AddPassengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPassengerViewController.swift; sourceTree = "<group>"; };
+		AA3B0A4E1FAD2B2200FD203B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AA448AE31FA13DB400AE37F2 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		AA448AE61FA13FF000AE37F2 /* VehicleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTableViewCell.swift; sourceTree = "<group>"; };
 		AA448AEA1FA140E200AE37F2 /* VehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTableViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA3B0A4C1FAD2A1600FD203B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA3B0A4D1FAD2A5F00FD203B /* Handlers */,
+				AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */,
+				AA448AE51FA13FCB00AE37F2 /* TableCells */,
+				AAE7F0E51F9951B900AB320C /* DomainClasses */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AA3B0A4D1FAD2A5F00FD203B /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				416EA2F41FA8C77B00CD6117 /* EventDataProcessor.swift */,
+				416EA2F01FA8BA6500CD6117 /* JSONParser.swift */,
+				416EA2EE1FA8ADD400CD6117 /* HTTPHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
 		AA448AE51FA13FCB00AE37F2 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,21 +214,14 @@
 		AA9836E31F86B087002AED1B /* BobApp */ = {
 			isa = PBXGroup;
 			children = (
-				AA448AE91FA140CD00AE37F2 /* TableControllers */,
-				AA448AE51FA13FCB00AE37F2 /* TableCells */,
+				AA3B0A4C1FAD2A1600FD203B /* Model */,
 				AACD6F0C1F9CB6CA00ACA9D4 /* BobApp.entitlements */,
 				AAE7F0EA1F9952F500AB320C /* Controllers */,
-				AAE7F0E51F9951B900AB320C /* DomainClasses */,
 				AA9836E41F86B087002AED1B /* AppDelegate.swift */,
 				AA9836E81F86B087002AED1B /* Main.storyboard */,
 				AA9836EB1F86B087002AED1B /* Assets.xcassets */,
 				AA9836ED1F86B087002AED1B /* LaunchScreen.storyboard */,
 				AA9836F01F86B087002AED1B /* Info.plist */,
-				416EA2F21FA8BDF600CD6117 /* Event.swift */,
-				416EA2F41FA8C77B00CD6117 /* EventDataProcessor.swift */,
-				AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */,
-				416EA2EE1FA8ADD400CD6117 /* HTTPHandler.swift */,
-				416EA2F01FA8BA6500CD6117 /* JSONParser.swift */,
 			);
 			path = BobApp;
 			sourceTree = "<group>";
@@ -233,6 +249,7 @@
 			children = (
 				AAE7F0E81F9952C500AB320C /* User.swift */,
 				AA448AE31FA13DB400AE37F2 /* Vehicle.swift */,
+				AA3B0A4E1FAD2B2200FD203B /* Event.swift */,
 			);
 			path = DomainClasses;
 			sourceTree = "<group>";
@@ -240,11 +257,13 @@
 		AAE7F0EA1F9952F500AB320C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA448AE91FA140CD00AE37F2 /* TableControllers */,
 				AA8E96AC1F8BBB260091452C /* PulsatorViewController.swift */,
 				AA2681AA1F95FF1600BBAA3D /* LoginViewController.swift */,
 				AA9836E61F86B087002AED1B /* ViewController.swift */,
 				AAC15DFA1F9FE20200BBC830 /* DetailViewController.swift */,
 				AA0059BB1FA6314F00C7076A /* AddVehicleViewController.swift */,
+				AA3B0A4A1FAD237500FD203B /* AddPassengerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -471,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3B0A4B1FAD237500FD203B /* AddPassengerViewController.swift in Sources */,
 				AA0059BA1FA628EE00C7076A /* VehiclesDatabase.swift in Sources */,
 				AA448AE41FA13DB400AE37F2 /* Vehicle.swift in Sources */,
 				416EA2F11FA8BA6500CD6117 /* JSONParser.swift in Sources */,
@@ -479,8 +499,8 @@
 				AA9836E71F86B087002AED1B /* ViewController.swift in Sources */,
 				AA8E96AD1F8BBB260091452C /* PulsatorViewController.swift in Sources */,
 				AAE7F0E91F9952C500AB320C /* User.swift in Sources */,
-				416EA2F31FA8BDF600CD6117 /* Event.swift in Sources */,
 				416966C11FAA3155009923F5 /* EventUITableViewCell.swift in Sources */,
+				AA3B0A4F1FAD2B2200FD203B /* Event.swift in Sources */,
 				AA448AE71FA13FF000AE37F2 /* VehicleTableViewCell.swift in Sources */,
 				416EA2EF1FA8ADD400CD6117 /* HTTPHandler.swift in Sources */,
 				416EA2F51FA8C77B00CD6117 /* EventDataProcessor.swift in Sources */,
