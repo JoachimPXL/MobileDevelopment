@@ -29,7 +29,6 @@ class AddPassengerViewController: UIViewController {
             let others = self.others.text!
         
         if PassengersDatabase.instance.addPassenger(vFirst_name: firstName, vLast_name: lastName, vOthers: others, vPhoneNumber: phoneNumber, vVehicleId: Int64(self.vehicleId)) != -1{
-            //AddedPassengerSegueToBobs
             self.performSegue(withIdentifier: "AddedPassengerSegueToBobs", sender: nil)
             
         } else {

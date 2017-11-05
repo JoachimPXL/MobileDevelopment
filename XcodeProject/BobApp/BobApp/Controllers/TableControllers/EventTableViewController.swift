@@ -9,7 +9,6 @@
 import UIKit
 
 class EventTableViewController: UITableViewController {
-    
     var mappedEvents2: [Event] = []
     
     override func viewDidLoad() {
@@ -36,18 +35,32 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "EventTableViewCell"
+        let cellIdentifier = "EventUITableCell"
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventUITableViewCell  else {
-            fatalError("The dequeued cell is not an instance of EventTableViewCell.")
+            fatalError("The dequeued cell is not an instance of EventUITableCell.")
         }
 
         // Fetches the appropriate meal for the data source layout.
         let event = mappedEvents2[indexPath.row]
         //VehiclesDatabase.instance.deleteVehicle(vid: 1)
-        cell.eventName.text = "\(event.name)"
+        cell.eventNam.text = "\(event.name)"
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        //ShowDetailOfEventSegue
+        self.performSegue(withIdentifier: "ShowDetailOfEventSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ShowDetailOfEventSegue") {
+            if let navigationViewController = segue.destination as? UINavigationController {
+                let vehicleViewController = navigationViewController.topViewController as! DetailViewController;
+                //add event ID for vehicle details.
+            }
+        }
     }
     
 }
