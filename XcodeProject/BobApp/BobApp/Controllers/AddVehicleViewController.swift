@@ -32,18 +32,12 @@ class AddVehicleViewController: UIViewController {
             vdepartureAtEvent: departureAtEventTextfield.text!,
             vdescription: descriptionCarTextField.text!,
             vphoneNumber: phoneNumberTextField.text!,
-            vcapacity: capacity.text as! Int) {
+            vcapacity: Int(capacity.text!)!) {
             
-            let alertController = UIAlertController(title: "Succes", message:
-                "You successfully added a bob-vehicle.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
-            
-            
+            self.performSegue(withIdentifier: "AddedCarSegueToBobs", sender: nil)
         } else {
             let alertController = UIAlertController(title: "Something went wrong", message:
-                "Please try again and make sure you fill in everything that is asked.", preferredStyle: UIAlertControllerStyle.alert)
+                "Probeer alles in te vullen en probeer het opnieuw.", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
@@ -61,6 +55,14 @@ class AddVehicleViewController: UIViewController {
     @objc
     func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "AddedCarSegueToBobs") {
+            if let navigationViewController = segue.destination as? UINavigationController {
+                let vehicleViewController = navigationViewController.topViewController as! VehicleTableViewController;
+            }
+        }
     }
 
 }

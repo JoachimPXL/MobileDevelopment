@@ -80,7 +80,6 @@ class VehicleTableViewController: UITableViewController {
         return [ride, delete]
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "AddPassengerIdentifier") {
             if let navigationViewController = segue.destination as? UINavigationController {
