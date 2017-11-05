@@ -14,6 +14,8 @@
 		416EA2F51FA8C77B00CD6117 /* EventDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2F41FA8C77B00CD6117 /* EventDataProcessor.swift */; };
 		AA0059BA1FA628EE00C7076A /* VehiclesDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */; };
 		AA0059BC1FA6314F00C7076A /* AddVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0059BB1FA6314F00C7076A /* AddVehicleViewController.swift */; };
+		AA2417801FAE7264001AF61C /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA24177F1FAE7264001AF61C /* Passenger.swift */; };
+		AA2417821FAE73D7001AF61C /* PassengersDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2417811FAE73D7001AF61C /* PassengersDatabase.swift */; };
 		AA26819C1F95F1DD00BBAA3D /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A31F95F1DD00BBAA3D /* FacebookCore.framework */; };
 		AA26819D1F95F1DD00BBAA3D /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A41F95F1DD00BBAA3D /* FacebookLogin.framework */; };
 		AA26819F1F95F1DD00BBAA3D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A61F95F1DD00BBAA3D /* FBSDKCoreKit.framework */; };
@@ -63,6 +65,8 @@
 		A7EBAC871E1E8BB3D31927F4 /* Pods-BobApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BobApp/Pods-BobApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesDatabase.swift; sourceTree = "<group>"; };
 		AA0059BB1FA6314F00C7076A /* AddVehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleViewController.swift; sourceTree = "<group>"; };
+		AA24177F1FAE7264001AF61C /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
+		AA2417811FAE73D7001AF61C /* PassengersDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengersDatabase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		AA26819A1F95F15700BBAA3D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		AA26819B1F95F15700BBAA3D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		AA2681A31F95F1DD00BBAA3D /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,11 +154,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA2417831FAE7832001AF61C /* SQLiteDatabases */ = {
+			isa = PBXGroup;
+			children = (
+				AA2417811FAE73D7001AF61C /* PassengersDatabase.swift */,
+				AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */,
+			);
+			path = SQLiteDatabases;
+			sourceTree = "<group>";
+		};
 		AA3B0A4C1FAD2A1600FD203B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA2417831FAE7832001AF61C /* SQLiteDatabases */,
 				AA3B0A4D1FAD2A5F00FD203B /* Handlers */,
-				AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */,
 				AA448AE51FA13FCB00AE37F2 /* TableCells */,
 				AAE7F0E51F9951B900AB320C /* DomainClasses */,
 			);
@@ -250,6 +263,7 @@
 				AAE7F0E81F9952C500AB320C /* User.swift */,
 				AA448AE31FA13DB400AE37F2 /* Vehicle.swift */,
 				AA3B0A4E1FAD2B2200FD203B /* Event.swift */,
+				AA24177F1FAE7264001AF61C /* Passenger.swift */,
 			);
 			path = DomainClasses;
 			sourceTree = "<group>";
@@ -501,10 +515,12 @@
 				AAE7F0E91F9952C500AB320C /* User.swift in Sources */,
 				416966C11FAA3155009923F5 /* EventUITableViewCell.swift in Sources */,
 				AA3B0A4F1FAD2B2200FD203B /* Event.swift in Sources */,
+				AA2417821FAE73D7001AF61C /* PassengersDatabase.swift in Sources */,
 				AA448AE71FA13FF000AE37F2 /* VehicleTableViewCell.swift in Sources */,
 				416EA2EF1FA8ADD400CD6117 /* HTTPHandler.swift in Sources */,
 				416EA2F51FA8C77B00CD6117 /* EventDataProcessor.swift in Sources */,
 				AA448AEB1FA140E200AE37F2 /* VehicleTableViewController.swift in Sources */,
+				AA2417801FAE7264001AF61C /* Passenger.swift in Sources */,
 				AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */,
 				AA2BF4C31FA5234A004D3275 /* EventTableViewController.swift in Sources */,
 				AAC15DFB1F9FE20200BBC830 /* DetailViewController.swift in Sources */,

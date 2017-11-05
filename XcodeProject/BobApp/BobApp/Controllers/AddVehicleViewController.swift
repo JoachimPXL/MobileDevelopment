@@ -19,6 +19,7 @@ class AddVehicleViewController: UIViewController {
     @IBOutlet weak var descriptionCarTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var dateOfBirthPicker: UIDatePicker!
+    @IBOutlet weak var capacity: UITextField!
     
     @IBAction func addVehicleButton(_ sender: Any) {
         
@@ -30,7 +31,8 @@ class AddVehicleViewController: UIViewController {
             vdepartureToEvent: departureToEventTextField.text!,
             vdepartureAtEvent: departureAtEventTextfield.text!,
             vdescription: descriptionCarTextField.text!,
-            vphoneNumber: phoneNumberTextField.text!) {
+            vphoneNumber: phoneNumberTextField.text!,
+            vcapacity: capacity.text as! Int) {
             
             let alertController = UIAlertController(title: "Succes", message:
                 "You successfully added a bob-vehicle.", preferredStyle: UIAlertControllerStyle.alert)

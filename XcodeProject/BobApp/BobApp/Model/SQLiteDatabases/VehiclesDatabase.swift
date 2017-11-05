@@ -11,7 +11,7 @@ import SQLite
 class VehiclesDatabase {
     static let instance = VehiclesDatabase()
     private let db: Connection?
-    private let vehicles = Table("vehiclesTable")
+    private let vehicles = Table("Bobs")
     private let id = Expression<Int64>("id")
     private let first_name = Expression<String>("first_name")
     private let last_name = Expression<String>("last_name")
@@ -21,6 +21,7 @@ class VehiclesDatabase {
     private let departureAtEvent = Expression<String>("departureAtEvent")
     private let description = Expression<String>("description")
     private let phoneNumber = Expression<String>("phoneNumber")
+    private let capacity = Expression<Int>("capacity")
     
     private init() {
         let path = NSSearchPathForDirectoriesInDomains (
@@ -34,7 +35,7 @@ class VehiclesDatabase {
             print ("Unable to open database")
         }
         
-        createTable()
+        self.createTable()
     }
     
     func createTable() {
@@ -49,6 +50,7 @@ class VehiclesDatabase {
                 table.column(departureAtEvent)
                 table.column(description)
                 table.column(phoneNumber)
+                table.column(capacity)
             })
         } catch {
             print("Unable to create table")
@@ -69,7 +71,8 @@ class VehiclesDatabase {
                     departureToEvent: vehicle[departureToEvent],
                     departureAtEvent: vehicle[departureAtEvent],
                     description: vehicle[description],
-                    phoneNumber: vehicle[phoneNumber]))
+                    phoneNumber: vehicle[phoneNumber],
+                    capacity: vehicle[capacity]))
             }
         } catch {
             print("Select failed")
@@ -79,11 +82,46 @@ class VehiclesDatabase {
         
     }
     
+    func getVehicleById(vId: Int) -> Vehicle {
+        var foundVehicle: Vehicle
+        foundVehicle = (Vehicle(
+            id: -1,
+            first_name: "",
+            last_name: "",
+            dateOfBirth: Date(timeIntervalSinceReferenceDate: -123456789.0),
+            meetupLocation: "",
+            departureToEvent: "",
+            departureAtEvent: "",
+            description: "",
+            phoneNumber: "",
+            capacity: -1))
+        do {
+            for vehicle in try db!.prepare(self.vehicles) {
+                if(vehicle[id] == vId) {
+                    foundVehicle = (Vehicle(
+                    id: vehicle[id],
+                    first_name: vehicle[first_name],
+                    last_name: vehicle[last_name],
+                    dateOfBirth: vehicle[dateOfBirth],
+                    meetupLocation: vehicle[meetupLocation],
+                    departureToEvent: vehicle[departureToEvent],
+                    departureAtEvent: vehicle[departureAtEvent],
+                    description: vehicle[description],
+                    phoneNumber: vehicle[phoneNumber],
+                    capacity: vehicle[capacity]))
+                }
+            }
+        } catch {
+            print("Select failed")
+        }
+       return foundVehicle
+    }
+    
     func addVehicle(vfirst_name: String, vlast_name: String, vdateOfBirth: Date, vmeetupLocation: String, vdepartureToEvent: String, vdepartureAtEvent: String,
-                    vdescription: String, vphoneNumber: String) -> Int64? {
+                    vdescription: String, vphoneNumber: String, vcapacity: Int) -> Int64? {
         do {
             let insert = vehicles.insert(first_name <- vfirst_name, last_name <- vlast_name, dateOfBirth <- vdateOfBirth, meetupLocation <- vmeetupLocation,
-                                         departureToEvent <- vdepartureToEvent, departureAtEvent <- vdepartureAtEvent, description <- vdescription, phoneNumber <- vphoneNumber)
+                                         departureToEvent <- vdepartureToEvent, departureAtEvent <- vdepartureAtEvent, description <- vdescription, phoneNumber <- vphoneNumber, capacity <- vcapacity)
             let id = try db!.run(insert)
             print(insert.asSQL())
             return id
@@ -115,7 +153,8 @@ class VehiclesDatabase {
                 departureToEvent <- newVehicle.departureToEvent,
                 departureAtEvent <- newVehicle.departureAtEvent,
                 description <- newVehicle.description,
-                phoneNumber <- newVehicle.phoneNumber
+                phoneNumber <- newVehicle.phoneNumber,
+                capacity <- newVehicle.capacity
                 ])
             if try db!.run(update) > 0 {
                 return true
