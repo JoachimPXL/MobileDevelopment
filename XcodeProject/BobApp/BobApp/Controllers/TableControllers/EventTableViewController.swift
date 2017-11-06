@@ -20,14 +20,25 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        
-        //self.performSegue(withIdentifier: "ShowDetailOfEventSegue", sender: nil)
+        if(mappedEvents2.count == 1) {
+            let alertController = UIAlertController(title: "Evenementen", message:
+                "Er is \(mappedEvents2.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(title: "Evenementen", message:
+                "Er zijn \(mappedEvents2.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mappedEvents2.count
     }
@@ -35,20 +46,20 @@ class EventTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "ShowDetailOfEventSegue", sender: nil)
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "EventUITableCell"
-
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventUITableViewCell  else {
             fatalError("The dequeued cell is not an instance of EventUITableCell.")
         }
-
+        
         // Fetches the appropriate meal for the data source layout.
         let event = mappedEvents2[indexPath.row]
         //VehiclesDatabase.instance.deleteVehicle(vid: 1)
         cell.eventNam.text = "\(event.name)"
-
+        
         return cell
     }
     
@@ -57,7 +68,6 @@ class EventTableViewController: UITableViewController {
             //toevoegen aan favorieten via NSFetchedResultController.
             tableView.reloadData()
         }
-        
         return [favorite]
     }
     

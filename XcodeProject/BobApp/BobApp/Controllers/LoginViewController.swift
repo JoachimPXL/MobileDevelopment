@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         //When someone taps in the app while typing (not in keyboard), the keyboard gets cancelled
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
-
+        
         if(FBSDKAccessToken.current() != nil) {
             navigateToNextPage()
         } else {
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     // MARK: methods.
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error:Error) {
-     if result.isCancelled {
+        if result.isCancelled {
             //handle cancellations
         }
         else {
@@ -88,7 +88,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         signInLabel.text = "Meld je aan met Facebook"
         print("loggedout")
     }
-   
+    
     func navigateToNextPage() {
         self.performSegue(withIdentifier: "loginWithFbIdentifier", sender: nil)
     }
