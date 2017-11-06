@@ -19,10 +19,12 @@ class Vehicle {
     var departureAtEvent: String
     var description: String
     var phoneNumber: String
+    var capacity: Int
     
     //MARK: Initialization
     
-    init(id: Int64, first_name: String, last_name: String, dateOfBirth: Date, meetupLocation: String, departureToEvent: String, departureAtEvent: String, description: String, phoneNumber: String) {
+    init(id: Int64, first_name: String, last_name: String, dateOfBirth: Date, meetupLocation: String,
+         departureToEvent: String, departureAtEvent: String, description: String, phoneNumber: String, capacity: Int) {
         self.id = id
         self.first_name = first_name
         self.last_name = last_name
@@ -32,6 +34,7 @@ class Vehicle {
         self.departureAtEvent = departureAtEvent
         self.description = description
         self.phoneNumber = phoneNumber
+        self.capacity = capacity
     }
     
 }

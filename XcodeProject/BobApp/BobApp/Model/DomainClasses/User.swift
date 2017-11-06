@@ -20,7 +20,6 @@ class User {
         }
         self.email = email
         self.vehicles = []
-        
     }
     
     func addVehicle(vehicle:Vehicle) {
