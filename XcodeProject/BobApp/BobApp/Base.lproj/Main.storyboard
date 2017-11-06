@@ -133,8 +133,8 @@
         <!--Events-->
         <scene sceneID="muh-R7-uee">
             <objects>
-                <tableViewController id="8nD-w0-Pxc" customClass="EventTableViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="335-Mi-svC">
+                <tableViewController storyboardIdentifier="ShowDetailOfEventSegue" id="8nD-w0-Pxc" customClass="EventTableViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="335-Mi-svC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -176,12 +176,71 @@
                                 <segue destination="nfY-iC-UcP" kind="show" id="WOz-qa-dcO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Favorite" style="done" id="Swl-ZT-MUl"/>
+                        <barButtonItem key="rightBarButtonItem" image="Favorite" style="done" id="Swl-ZT-MUl">
+                            <connections>
+                                <segue destination="IEF-tk-iW0" kind="show" id="YgK-RE-u9A"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="3HP-Fq-AUb" kind="showDetail" identifier="ShowDetailOfEventSegue" id="v9w-Jh-rGY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N2-e6-FZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1186" y="-97"/>
+            <point key="canvasLocation" x="862" y="-107"/>
+        </scene>
+        <!--Favorite events-->
+        <scene sceneID="4dL-EC-8ey">
+            <objects>
+                <tableViewController id="RUg-CK-aXb" customClass="FavoriteEventTableViewController" customModule="BobApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="02R-QI-vI6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteEventCell" rowHeight="100" id="mZq-bV-QpY" customClass="FavoriteUITableViewCell" customModule="BobApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mZq-bV-QpY" id="wIo-Yx-5N9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xe-Ya-sJr">
+                                            <rect key="frame" x="0.0" y="-7" width="121" height="113"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Versuz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agj-OA-aKO">
+                                            <rect key="frame" x="129" y="8" width="232" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="eventNam" destination="agj-OA-aKO" id="C8n-gT-G2S"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RUg-CK-aXb" id="HTh-BM-JAm"/>
+                            <outlet property="delegate" destination="RUg-CK-aXb" id="ZcO-x8-3Jw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorite events" id="mYq-Qo-wKo">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="EBX-Ii-5F9">
+                            <connections>
+                                <segue destination="8nD-w0-Pxc" kind="show" id="1zz-II-qDW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W8S-00-sPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="-102.09895052473765"/>
         </scene>
         <!--Add Vehicle View Controller-->
         <scene sceneID="clv-lY-yV5">
@@ -192,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oc-9g-H1n">
-                                <rect key="frame" x="37" y="30" width="301" height="30"/>
+                                <rect key="frame" x="37" y="74" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7iH-9g-aa1"/>
                                 </constraints>
@@ -208,7 +267,7 @@
                                 <color key="shadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Voornaam" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ii3-EU-OCJ">
-                                <rect key="frame" x="37" y="68" width="301" height="30"/>
+                                <rect key="frame" x="37" y="112" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WNt-n8-GQF"/>
                                 </constraints>
@@ -217,7 +276,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="given-name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Achternaam" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cF4-R0-9MR">
-                                <rect key="frame" x="37" y="115" width="301" height="30"/>
+                                <rect key="frame" x="37" y="159" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5uG-sa-W4K"/>
                                 </constraints>
@@ -226,7 +285,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="family-name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vertreklocatie - Afspreekpunt" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BrG-q2-mFi">
-                                <rect key="frame" x="37" y="208.5" width="301" height="30"/>
+                                <rect key="frame" x="37" y="252.5" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AEi-2Y-F4m"/>
                                 </constraints>
@@ -235,7 +294,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tijdstip van vertrek naar evenement" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fnp-k8-bpw">
-                                <rect key="frame" x="37" y="255.5" width="301" height="30"/>
+                                <rect key="frame" x="37" y="299.5" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dLq-Hh-fYj"/>
                                 </constraints>
@@ -244,7 +303,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tijdstip van vertrek naar huis" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5M4-FJ-Hix">
-                                <rect key="frame" x="37" y="302.5" width="301" height="30"/>
+                                <rect key="frame" x="37" y="346.5" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kpS-tS-aJg"/>
                                 </constraints>
@@ -253,7 +312,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Auto type - model - kleur" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tlf-Ds-d6C">
-                                <rect key="frame" x="37" y="349.5" width="301" height="30"/>
+                                <rect key="frame" x="37" y="393.5" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PGx-iJ-3bx"/>
                                 </constraints>
@@ -262,7 +321,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDk-pN-LNw">
-                                <rect key="frame" x="77" y="546.5" width="220" height="40"/>
+                                <rect key="frame" x="77" y="590.5" width="220" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="phe-nh-5Cu"/>
                                 </constraints>
@@ -274,7 +333,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gsm" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sn1-dN-W7u">
-                                <rect key="frame" x="37" y="393.5" width="301" height="30"/>
+                                <rect key="frame" x="37" y="437.5" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ptt-kK-E7z"/>
                                 </constraints>
@@ -283,7 +342,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hoeveelheid plaatsen in de auto" textAlignment="natural" minimumFontSize="17" background="InputField" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sjD-Kq-XDj">
-                                <rect key="frame" x="37" y="441.5" width="301" height="30"/>
+                                <rect key="frame" x="37" y="485.5" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="jFw-TK-cjz"/>
                                 </constraints>
@@ -292,7 +351,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Geb. datum:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idf-hb-2jH">
-                                <rect key="frame" x="9" y="167" width="110" height="21"/>
+                                <rect key="frame" x="9" y="211" width="110" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" red="1" green="0.99710999850000004" blue="0.99481380720000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -357,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfx-0y-XRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.1999999999998" y="-18.440779610194905"/>
+            <point key="canvasLocation" x="3384.8000000000002" y="-134.48275862068968"/>
         </scene>
         <!--Bobs-->
         <scene sceneID="G3L-O7-9JW">
@@ -485,7 +544,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Bobs" id="GpM-sw-XOI">
-                        <barButtonItem key="leftBarButtonItem" image="Back" id="Wzf-Jl-ReE"/>
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="Wzf-Jl-ReE">
+                            <connections>
+                                <segue destination="BTi-SQ-cHE" kind="show" id="ScE-I5-CAi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="AddBob" id="zkQ-RG-Xa1">
                             <connections>
                                 <segue destination="rIo-QY-c49" kind="show" id="xtP-qT-j9r"/>
@@ -498,7 +561,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kl5-tH-PJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1998" y="-107"/>
+            <point key="canvasLocation" x="2700" y="-134.48275862068968"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="hm1-iL-GXQ">
@@ -590,17 +653,24 @@
                                 </state>
                                 <connections>
                                     <action selector="registerEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uWt-ZA-6Fk"/>
+                                    <segue destination="KY8-u5-Ffs" kind="show" identifier="ShowBobSegue" id="9AL-Lj-vMM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="amT-8m-Ush"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hyK-bV-fVu"/>
+                    <navigationItem key="navigationItem" id="hyK-bV-fVu">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="y0f-q0-FFw">
+                            <connections>
+                                <segue destination="8nD-w0-Pxc" kind="show" id="b8G-Lg-95n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrT-O6-xfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="862" y="685"/>
+            <point key="canvasLocation" x="132" y="683"/>
         </scene>
         <!--Ride Along-->
         <scene sceneID="gyI-ai-Yrs">
@@ -696,7 +766,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLu-J1-9tA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3384.8000000000002" y="-18.440779610194905"/>
+            <point key="canvasLocation" x="4068" y="-134.48275862068968"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xsQ-z3-hAK">
@@ -802,7 +872,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HgP-jD-uyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="684"/>
+            <point key="canvasLocation" x="-602" y="684"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hP7-cc-dbS">
@@ -840,6 +910,24 @@
             </objects>
             <point key="canvasLocation" x="1612" y="705"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R8r-je-TvQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IEF-tk-iW0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0ME-Fb-PT5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RUg-CK-aXb" kind="relationship" relationship="rootViewController" id="hX6-n9-Fro"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="af0-Vg-j7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2391" y="629"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AddBob" width="32" height="32"/>
@@ -852,9 +940,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WOz-qa-dcO"/>
-        <segue reference="A0h-wa-HHc"/>
-        <segue reference="uQr-Np-woK"/>
+        <segue reference="9AL-Lj-vMM"/>
+        <segue reference="ScE-I5-CAi"/>
+        <segue reference="KjQ-qh-PgN"/>
         <segue reference="xtP-qT-j9r"/>
+        <segue reference="b8G-Lg-95n"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

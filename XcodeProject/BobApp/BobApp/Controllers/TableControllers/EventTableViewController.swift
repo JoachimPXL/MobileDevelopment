@@ -13,16 +13,15 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.reloadData()
+        tableView.reloadData()
         mappedEvents2.append(Event(name: "Testevent", attending: 90,afstand: 90.10))
-        print("ZIT IN EVENT VIEW CONTROLLER")
-//        let otherVC = PulsatorViewController()
-        //mappedEvents2 = otherVC.mappedEvents
-        print(mappedEvents2.count)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+        
+        //self.performSegue(withIdentifier: "ShowDetailOfEventSegue", sender: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,6 +30,10 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mappedEvents2.count
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ShowDetailOfEventSegue", sender: nil)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,9 +52,13 @@ class EventTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        //ShowDetailOfEventSegue
-        self.performSegue(withIdentifier: "ShowDetailOfEventSegue", sender: nil)
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let favorite = UITableViewRowAction(style: .normal, title: "❤ \n Favoriet") { action, index in
+            //toevoegen aan favorieten via NSFetchedResultController.
+            tableView.reloadData()
+        }
+        
+        return [favorite]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -13,11 +13,9 @@ import KeychainSwift
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
-    var fbLoginSuccess = false
     @IBOutlet weak var signInLabel: UILabel!
     private let keychain = KeychainSwift()
-    
-    //MARK: override methods.
+    var fbLoginSuccess = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +26,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if(FBSDKAccessToken.current() != nil) {
             navigateToNextPage()
         } else {
-            signInLabel.text = "Sign in to use the BobApp"
+            signInLabel.text = "Meld je aan met Facebook"
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         }
         loginButton.delegate = self
@@ -74,7 +72,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     self.keychain.delete("accessToken")
                     self.keychain.delete("userId")
                     self.keychain.clear()
-                    signInLabel.text = "Sign in to use the BobApp"
+                    signInLabel.text = "Meld je aan met Facebook"
                 }
             }
         }
@@ -87,7 +85,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.keychain.clear()
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
-        signInLabel.text = "Sign in to use the BobApp"
+        signInLabel.text = "Meld je aan met Facebook"
         print("loggedout")
     }
    

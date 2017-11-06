@@ -14,6 +14,8 @@
 		416EA2F51FA8C77B00CD6117 /* EventDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416EA2F41FA8C77B00CD6117 /* EventDataProcessor.swift */; };
 		AA0059BA1FA628EE00C7076A /* VehiclesDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */; };
 		AA0059BC1FA6314F00C7076A /* AddVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0059BB1FA6314F00C7076A /* AddVehicleViewController.swift */; };
+		AA1E29741FAFD35F00194C36 /* FavoriteUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E29731FAFD35F00194C36 /* FavoriteUITableViewCell.swift */; };
+		AA1E29761FAFD45D00194C36 /* FavoriteEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E29751FAFD45D00194C36 /* FavoriteEventTableViewController.swift */; };
 		AA2417801FAE7264001AF61C /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA24177F1FAE7264001AF61C /* Passenger.swift */; };
 		AA2417821FAE73D7001AF61C /* PassengersDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2417811FAE73D7001AF61C /* PassengersDatabase.swift */; };
 		AA26819C1F95F1DD00BBAA3D /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2681A31F95F1DD00BBAA3D /* FacebookCore.framework */; };
@@ -65,6 +67,8 @@
 		A7EBAC871E1E8BB3D31927F4 /* Pods-BobApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BobApp/Pods-BobApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA0059B91FA628EE00C7076A /* VehiclesDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesDatabase.swift; sourceTree = "<group>"; };
 		AA0059BB1FA6314F00C7076A /* AddVehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleViewController.swift; sourceTree = "<group>"; };
+		AA1E29731FAFD35F00194C36 /* FavoriteUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUITableViewCell.swift; sourceTree = "<group>"; };
+		AA1E29751FAFD45D00194C36 /* FavoriteEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEventTableViewController.swift; sourceTree = "<group>"; };
 		AA24177F1FAE7264001AF61C /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		AA2417811FAE73D7001AF61C /* PassengersDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengersDatabase.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		AA26819A1F95F15700BBAA3D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../../../../Downloads/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			children = (
 				AA448AE61FA13FF000AE37F2 /* VehicleTableViewCell.swift */,
 				416966C01FAA3155009923F5 /* EventUITableViewCell.swift */,
+				AA1E29731FAFD35F00194C36 /* FavoriteUITableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 			children = (
 				AA448AEA1FA140E200AE37F2 /* VehicleTableViewController.swift */,
 				AA2BF4C21FA5234A004D3275 /* EventTableViewController.swift */,
+				AA1E29751FAFD45D00194C36 /* FavoriteEventTableViewController.swift */,
 			);
 			path = TableControllers;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 				416966C11FAA3155009923F5 /* EventUITableViewCell.swift in Sources */,
 				AA3B0A4F1FAD2B2200FD203B /* Event.swift in Sources */,
 				AA2417821FAE73D7001AF61C /* PassengersDatabase.swift in Sources */,
+				AA1E29741FAFD35F00194C36 /* FavoriteUITableViewCell.swift in Sources */,
 				AA448AE71FA13FF000AE37F2 /* VehicleTableViewCell.swift in Sources */,
 				416EA2EF1FA8ADD400CD6117 /* HTTPHandler.swift in Sources */,
 				416EA2F51FA8C77B00CD6117 /* EventDataProcessor.swift in Sources */,
@@ -523,6 +530,7 @@
 				AA2417801FAE7264001AF61C /* Passenger.swift in Sources */,
 				AA9836E51F86B087002AED1B /* AppDelegate.swift in Sources */,
 				AA2BF4C31FA5234A004D3275 /* EventTableViewController.swift in Sources */,
+				AA1E29761FAFD45D00194C36 /* FavoriteEventTableViewController.swift in Sources */,
 				AAC15DFB1F9FE20200BBC830 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
