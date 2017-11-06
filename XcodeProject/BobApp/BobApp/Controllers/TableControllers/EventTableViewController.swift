@@ -15,10 +15,10 @@ import CoreLocation
 
 class EventTableViewController: UITableViewController {
     var mappedEvents: [Event] = []
-    var longitude:Double! = 0
-    var latitude:Double! = 0
-    var radiusInMeters: Int! = 0
-    var time:String! = ""
+    var longitude:Double!
+    var latitude:Double!
+    var radiusInMeters: Int!
+    var time:String!
     var accessToken:String! = FBSDKAccessToken.current().tokenString
     
     override func viewDidLoad() {
@@ -89,13 +89,16 @@ class EventTableViewController: UITableViewController {
         }
     }
     
-    
     enum MyError: Error{
         case ApiCallFailedError
     }
     
     func getEventsFromApi() {
         //  let url = "http://0.0.0.0:3000/events?lat=\(latitude)lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accesToken=\(accessToken)"
+        print(self.latitude)
+        print(self.longitude)
+        print(self.radiusInMeters)
+        
         if let longitude = longitude, let latitude = latitude ,let radiusInMeters = radiusInMeters , let time = time , let accessToken = accessToken {
             var url = "http://0.0.0.0:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
             Alamofire.request(url).validate().responseJSON { response in

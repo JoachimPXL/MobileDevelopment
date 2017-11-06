@@ -63,20 +63,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         radiusSlider.setValue(Float(lroundf(radiusSlider.value)), animated: true)
         radiusTextField.text = "\(radiusSlider.value) KM"
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ScanEventsSegue") {
-            if let eventTableViewController = segue.destination as? EventTableViewController {
-                print("tapped")
-                //nodige data voor api call meesturen met segue naar volgende controller.
-                eventTableViewController.accessToken = keychain.get("accessToken")!
-                eventTableViewController.latitude = getLatitude()
-                eventTableViewController.longitude = getLongitude()
-                eventTableViewController.radiusInMeters = Int(radiusSlider.value * 1000)
-                eventTableViewController.time = afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex)
-            }
-        }
-    }
 
     @IBAction func scanRadius(_ sender: Any) {
         let longitude:Double! = getLongitude()
@@ -116,6 +102,22 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ScanEventsSegue") {
+            
+            if let navigationViewController = segue.destination as? UINavigationController{
+                let eventTableViewController = navigationViewController.topViewController as! EventTableViewController;
+                print("tapped")
+                //nodige data voor api call meesturen met segue naar volgende controller.
+                eventTableViewController.accessToken = keychain.get("accessToken")!
+                eventTableViewController.latitude = getLatitude()
+                eventTableViewController.longitude = getLongitude()
+                eventTableViewController.radiusInMeters = Int(radiusSlider.value * 1000)
+                eventTableViewController.time = afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex)
+            }
+        }
     }
     
 }

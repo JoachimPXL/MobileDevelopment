@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,7 +85,7 @@
                                 </state>
                                 <connections>
                                     <action selector="scanRadius:" destination="4b1-Ht-XWM" eventType="touchUpInside" id="mGs-wq-XoM"/>
-                                    <segue destination="qsK-wy-zLI" kind="show" id="YFD-5J-E6a"/>
+                                    <segue destination="qsK-wy-zLI" kind="show" identifier="ScanEventsSegue" id="YFD-5J-E6a"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="a3m-y6-AzJ">
@@ -124,7 +124,6 @@
                         <outlet property="afternoonOrEvening" destination="a3m-y6-AzJ" id="Bdj-dQ-A9t"/>
                         <outlet property="radiusSlider" destination="b2d-hf-ypf" id="gPq-Nc-n2f"/>
                         <outlet property="radiusTextField" destination="e9a-cR-MC8" id="dWQ-xm-cjE"/>
-                        <segue destination="8nD-w0-Pxc" kind="show" identifier="ScanEventsSegue" id="hDO-P8-M8B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-kf-sbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -909,7 +908,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VDH-W7-yaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="705"/>
+            <point key="canvasLocation" x="1220" y="1045"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R8r-je-TvQ">
@@ -940,12 +939,13 @@
         <image name="Pinpoint" width="87" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="YFD-5J-E6a"/>
         <segue reference="WOz-qa-dcO"/>
         <segue reference="9AL-Lj-vMM"/>
         <segue reference="ScE-I5-CAi"/>
         <segue reference="KjQ-qh-PgN"/>
         <segue reference="xtP-qT-j9r"/>
-        <segue reference="hDO-P8-M8B"/>
+        <segue reference="cQB-NF-XG7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
