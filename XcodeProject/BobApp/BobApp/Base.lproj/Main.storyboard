@@ -124,6 +124,7 @@
                         <outlet property="afternoonOrEvening" destination="a3m-y6-AzJ" id="Bdj-dQ-A9t"/>
                         <outlet property="radiusSlider" destination="b2d-hf-ypf" id="gPq-Nc-n2f"/>
                         <outlet property="radiusTextField" destination="e9a-cR-MC8" id="dWQ-xm-cjE"/>
+                        <segue destination="8nD-w0-Pxc" kind="show" identifier="ScanEventsSegue" id="hDO-P8-M8B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-kf-sbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +189,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N2-e6-FZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="862" y="-107"/>
+            <point key="canvasLocation" x="862" y="-102"/>
         </scene>
         <!--Favorite events-->
         <scene sceneID="4dL-EC-8ey">
@@ -944,7 +945,7 @@
         <segue reference="ScE-I5-CAi"/>
         <segue reference="KjQ-qh-PgN"/>
         <segue reference="xtP-qT-j9r"/>
-        <segue reference="b8G-Lg-95n"/>
+        <segue reference="hDO-P8-M8B"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
