@@ -14,7 +14,7 @@ class EventTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
-        mappedEvents2.append(Event(name: "Testevent", attending: 90,afstand: 90.10))
+        //mappedEvents2.append(Event(name: "Testevent", attending: 90,afstand: 90.10))
 
     }
     

@@ -51,7 +51,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         case ApiCallFailedError
     }
     
-    func getEventsFromApi() throws -> MyError {
+    func  getEventsFromApi() throws -> MyError {
         print("test")
         let longitude:Double! = getLongitude()
         let latitude:Double! = getLatitude()
@@ -80,9 +80,14 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
                             let attending = event["stats"]["attending"].int
                             let startdate = event["startTime"].string
                             let enddate = event["endTime"].string
-                            let orgianisator = event["vanue"]["name"].string
-                            
-                            let e = Event(name: title!, attending: attending!,afstand: distanceInMeters)
+                            let organisator = event["vanue"]["name"].string
+                            let description = event["description"].string
+                            let lat = event["place"]["location"]["latitude"].double
+                            let long = event["place"]["location"]["longitude"].double
+                           //TODO let image =
+                            let id = event["id"].string
+                            let link = "https://www.facebook.com/events/\(id)";
+                            let e = Event(name: title!, attending: attending!,afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link)
                             self.mappedEvents.append(e)
                         }
                         
