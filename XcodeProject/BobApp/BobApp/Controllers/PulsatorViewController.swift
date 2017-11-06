@@ -12,7 +12,7 @@ import CoreLocation
 import KeychainSwift
 import Alamofire
 import SwiftyJSON
-
+import PromiseKit
 
 class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
@@ -27,24 +27,11 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         radiusSlider.setValue(Float(lroundf(radiusSlider.value)), animated: true)
         radiusTextField.text = "\(radiusSlider.value) KM"
     }
-    
+
     @IBAction func scanRadius(_ sender: Any) {
-        //            print(getLongitude())
-        //            print(getLatitude())
-        //            print(afternoonOrEvening.titleForSegment(at: afternoonOrEvening.selectedSegmentIndex))
-        //            print(radiusSlider.value * 1000)
-        //            print(keychain.get("accessToken"))
         
-        do {
-            try getEventsFromApi()
-            
-        } catch {
-            let alertController = UIAlertController(title: "Something went wrong", message:
-                "Please try again and make sure you fill in everything that is asked. Also make sure your location settings are configured the right way.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
+        
+        
     }
     
     enum MyError: Error{
@@ -52,8 +39,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func getEventsFromApi() throws -> MyError {
-        
-        
         let longitude:Double! = getLongitude()
         let latitude:Double! = getLatitude()
         let radiusInMeters: Int! = Int(radiusSlider.value * 1000)
@@ -67,7 +52,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
                 Alamofire.request(url).validate().responseJSON { response in
                     debugPrint(response)
                     if let jsonObj = response.result.value {
-                        //print("JSON: \(jsonObj)")
                         let json = JSON(jsonObj)
                         for (key, event) in json["events"] {
                             //                          get coordinates from event and your current to calculate distance.
@@ -88,11 +72,10 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
                         
                         print("array length: ")
                         print(self.mappedEvents.count)
-                        
                     }
                 }
             }
-            self.performSegue(withIdentifier: "ScanEventsSegue", sender: nil)
+            
         } else {
             throw MyError.ApiCallFailedError
         }
@@ -102,7 +85,9 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ScanEventsSegue") {
             if let eventTableViewController = segue.destination as? EventTableViewController {
-                eventTableViewController.mappedEvents2 = self.mappedEvents
+                print("tapped")
+                self.mappedEvents.append(Event(name: "Testevent", attending: 90, afstand: 90.10))
+                eventTableViewController.mappedEvents2 = mappedEvents
             }
         }
     }
