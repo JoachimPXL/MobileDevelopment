@@ -8,8 +8,8 @@
 
 import UIKit
 import FBSDKLoginKit
+import Foundation
 import Alamofire
-import PromiseKit
 import SwiftyJSON
 import CoreLocation
 
@@ -21,27 +21,32 @@ class EventTableViewController: UITableViewController {
     var time:String!
     var accessToken:String! = FBSDKAccessToken.current().tokenString
     
+    @IBAction func refreshButton(_ sender: Any) {
+        self.tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        getEventsFromApi()
-        tableView.reloadData()
+        
+        getEventsFromApi(radiusInMeters: radiusInMeters, time: time, latitude: latitude, longitude: longitude, accessToken: accessToken, completion: {
+            self.tableView.reloadData()
+            if(self.mappedEvents.count == 1) {
+                let alertController = UIAlertController(title: "Evenementen", message:
+                    "Er is \(self.mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "Evenementen", message:
+                    "Er zijn \(self.mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        if(mappedEvents.count == 1) {
-            let alertController = UIAlertController(title: "Evenementen", message:
-                "Er is \(mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
-        } else {
-            let alertController = UIAlertController(title: "Evenementen", message:
-                "Er zijn \(mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,16 +62,12 @@ class EventTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "EventUITableCell"
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventUITableViewCell  else {
             fatalError("The dequeued cell is not an instance of EventUITableCell.")
         }
-        
-        // Fetches the appropriate meal for the data source layout.
+
         let event = mappedEvents[indexPath.row]
-        //VehiclesDatabase.instance.deleteVehicle(vid: 1)
         cell.eventNam.text = "\(event.name)"
         
         return cell
@@ -89,50 +90,46 @@ class EventTableViewController: UITableViewController {
         }
     }
     
-    enum MyError: Error{
-        case ApiCallFailedError
-    }
     
-    func getEventsFromApi() {
-        //  let url = "http://0.0.0.0:3000/events?lat=\(latitude)lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accesToken=\(accessToken)"
-        print(self.latitude)
-        print(self.longitude)
-        print(self.radiusInMeters)
+    func getEventsFromApi(radiusInMeters: Int, time: String, latitude: Double, longitude: Double, accessToken: String, completion: @escaping () -> ()) {
         
-        if let longitude = longitude, let latitude = latitude ,let radiusInMeters = radiusInMeters , let time = time , let accessToken = accessToken {
-            var url = "http://0.0.0.0:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
-            Alamofire.request(url).validate().responseJSON { response in
-                debugPrint(response)
-                if let jsonObj = response.result.value {
-                    let json = JSON(jsonObj)
-                    for (key, event) in json["events"] {
-                        //                          get coordinates from event and your current to calculate distance.
-                        let coordinate₀ = CLLocation(latitude: event["place"]["location"]["latitude"].double!, longitude: event["place"]["location"]["longitude"].double!)
-                        let coordinate₁ = CLLocation(latitude: latitude, longitude: longitude)
-                        //                          distance result in meters
-                        let distanceInMeters = coordinate₀.distance(from: coordinate₁)
-                        //                          properties from event only those who we need
-                        let title = event["name"].string
-                        let attending = event["stats"]["attending"].int
-                        let startdate = event["startTime"].string
-                        let enddate = event["endTime"].string
-                        let organisator = event["vanue"]["name"].string
-                        let description = event["description"].string
-                        let lat = event["place"]["location"]["latitude"].double
-                        let long = event["place"]["location"]["longitude"].double
-                        //TODO let image =
-                        let id = event["id"].string
-                        let link = "https://www.facebook.com/events/\(id)";
-                        let e = Event(name: title!, attending: attending!,afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link)
-
-                        self.mappedEvents.append(e)
+        let url = "http://0.0.0.0:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
+        Alamofire.request(url).validate().responseJSON { response in
+            if let jsonObj = response.result.value {
+                let json = JSON(jsonObj)
+                for (key, event) in json["events"] {
+                    // get coordinates from event and your current to calculate distance.
+                    let coordinate₀ = CLLocation(latitude: event["place"]["location"]["latitude"].double!, longitude: event["place"]["location"]["longitude"].double!)
+                    let coordinate₁ = CLLocation(latitude: latitude, longitude: longitude)
+                    // distance result in meters
+                    let distanceInMeters = coordinate₀.distance(from: coordinate₁)
+                    // properties from event only those who we need
+                    let title = event["name"].string
+                    let attending = event["stats"]["attending"].int
+                    let startdate = event["startTime"].string
+                    let enddate = event["endTime"].string
+                    let organisator = event["venue"]["name"].string
+                    let description = event["description"].string
+                    let lat = event["place"]["location"]["latitude"].double
+                    let long = event["place"]["location"]["longitude"].double
+                    //TODO let image =
+                    let id = event["id"].string
+                    let link = "https://www.facebook.com/events/" + id!
+                    var e : Event?
+                    if(enddate != nil && startdate != nil && organisator != nil && description != nil && title != nil) {
+                        e = Event(name: title!, attending: attending!, afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link)
+                        print("created")
+                    }
+                    
+                    if(e != nil) {
+                        self.mappedEvents.append(e!)
+                        print(self.mappedEvents.count)
                     }
                 }
             }
+            completion()
         }
-        tableView.reloadData()
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let _:CLLocationCoordinate2D = manager.location!.coordinate
@@ -141,7 +138,9 @@ class EventTableViewController: UITableViewController {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
+    
 }
+
 
 
 

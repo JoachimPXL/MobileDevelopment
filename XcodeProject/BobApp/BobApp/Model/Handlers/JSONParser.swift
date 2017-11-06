@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class JSONParser {
     static func parse (data: Data) -> [String: AnyObject]? {
         print("in deze func")
@@ -16,7 +17,7 @@ class JSONParser {
                 as? [String: AnyObject]
             
             return son!
-        }catch( let parseError){
+        } catch (let parseError) {
             print("there was an error parsing the json: \"\(parseError.localizedDescription)\"")
         }
         return nil

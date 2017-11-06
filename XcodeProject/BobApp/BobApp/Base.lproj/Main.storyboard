@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -176,11 +177,23 @@
                                 <segue destination="nfY-iC-UcP" kind="show" id="WOz-qa-dcO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Favorite" style="done" id="Swl-ZT-MUl">
-                            <connections>
-                                <segue destination="IEF-tk-iW0" kind="show" id="YgK-RE-u9A"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Favorite" style="done" id="Swl-ZT-MUl">
+                                <connections>
+                                    <segue destination="IEF-tk-iW0" kind="show" id="YgK-RE-u9A"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="aCx-ZH-H16">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="P2o-HJ-qqm">
+                                    <rect key="frame" x="275" y="7" width="49" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="refresh"/>
+                                    <connections>
+                                        <action selector="refreshButton:" destination="8nD-w0-Pxc" eventType="touchUpInside" id="gfL-Eh-2Pd"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="3HP-Fq-AUb" kind="showDetail" identifier="ShowDetailOfEventSegue" id="v9w-Jh-rGY"/>
@@ -939,7 +952,6 @@
         <image name="Pinpoint" width="87" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YFD-5J-E6a"/>
         <segue reference="WOz-qa-dcO"/>
         <segue reference="9AL-Lj-vMM"/>
         <segue reference="ScE-I5-CAi"/>

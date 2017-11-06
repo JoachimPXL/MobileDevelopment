@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class Event {
     var name : String
     var afstand: Double
@@ -20,7 +19,6 @@ class Event {
         var organisator: String
         var lat : Double
         var long: Double
-    //
     
     init(name: String, attending: Int, afstand:Double, startdate:String, enddate:String, organisator:String, description:String, lat:Double, long:Double,link:String) {
         self.name = name;
@@ -34,6 +32,4 @@ class Event {
         self.lat = lat;
         self.link = link;
     }
-    
-    
 }
