@@ -111,11 +111,17 @@ class EventTableViewController: UITableViewController {
                         //                          properties from event only those who we need
                         let title = event["name"].string
                         let attending = event["stats"]["attending"].int
-                        let startDate = event["startTime"].string
-                        let endDate = event["endTime"].string
+                        let startdate = event["startTime"].string
+                        let enddate = event["endTime"].string
                         let organisator = event["vanue"]["name"].string
-                        
-                        let e = Event(name: title!, attending: attending!,afstand: distanceInMeters, startdate: startDate!, enddate: endDate!, organisator: organisator!, description : "test", lat: coordinate₀.coordinate.latitude, long: coordinate₀.coordinate.longitude, link: "url")
+                        let description = event["description"].string
+                        let lat = event["place"]["location"]["latitude"].double
+                        let long = event["place"]["location"]["longitude"].double
+                        //TODO let image =
+                        let id = event["id"].string
+                        let link = "https://www.facebook.com/events/\(id)";
+                        let e = Event(name: title!, attending: attending!,afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link)
+
                         self.mappedEvents.append(e)
                     }
                 }
