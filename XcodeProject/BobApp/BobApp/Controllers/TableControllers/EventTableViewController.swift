@@ -111,16 +111,17 @@ class EventTableViewController: UITableViewController {
                         //                          properties from event only those who we need
                         let title = event["name"].string
                         let attending = event["stats"]["attending"].int
-                        let startdate = event["startTime"].string
-                        let enddate = event["endTime"].string
-                        let orgianisator = event["vanue"]["name"].string
+                        let startDate = event["startTime"].string
+                        let endDate = event["endTime"].string
+                        let organisator = event["vanue"]["name"].string
                         
-                        let e = Event(name: title!, attending: attending!,afstand: distanceInMeters)
+                        let e = Event(name: title!, attending: attending!,afstand: distanceInMeters, startdate: startDate!, enddate: endDate!, organisator: organisator!, description : "test", lat: coordinate₀.coordinate.latitude, long: coordinate₀.coordinate.longitude, link: "url")
                         self.mappedEvents.append(e)
                     }
                 }
             }
         }
+        tableView.reloadData()
     }
     
     

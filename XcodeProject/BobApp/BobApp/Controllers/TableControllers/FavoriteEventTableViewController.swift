@@ -13,7 +13,7 @@ class FavoriteEventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        favorites.append(Event(name: "Testevent", attending: 90,afstand: 90.10))
+        //favorites.append(Event(name: "Testevent", attending: 90,afstand: 90.10))
     }
     
     override func viewDidAppear(_ animated: Bool) {
