@@ -27,22 +27,39 @@ class EventTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getEventsFromApi(radiusInMeters: radiusInMeters, time: time, latitude: latitude, longitude: longitude, accessToken: accessToken, completion: {
-            self.tableView.reloadData()
-            if(self.mappedEvents.count == 1) {
-                let alertController = UIAlertController(title: "Evenementen", message:
-                    "Er is \(self.mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+        DispatchQueue.global(qos: .background).async {
+            self.getEventsFromApi(radiusInMeters: self.radiusInMeters, time: self.time, latitude: self.latitude, longitude: self.longitude, accessToken: self.accessToken, completion: {
+                self.tableView.reloadData()
+                self.dismiss(animated: false, completion: nil)
                 
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "Evenementen", message:
-                    "Er zijn \(self.mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                if(self.mappedEvents.count == 1) {
+                    let alertController = UIAlertController(title: "Evenementen", message:
+                        "Er is \(self.mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "Evenementen", message:
+                        "Er zijn \(self.mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+            
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: nil, message: "Even geduld aub...", preferredStyle: .alert)
                 
-                self.present(alertController, animated: true, completion: nil)
+                let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+                loadingIndicator.hidesWhenStopped = true
+                loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                loadingIndicator.startAnimating();
+                
+                alert.view.addSubview(loadingIndicator)
+                self.present(alert, animated: true, completion: nil)
             }
-        })
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,7 +85,9 @@ class EventTableViewController: UITableViewController {
         }
 
         let event = mappedEvents[indexPath.row]
-        cell.eventNam.text = "\(event.name)"
+        cell.eventNam.text = event.name
+        cell.attenders.text = "aanwezigen: \(event.attending)"
+        cell.organisator.text = event.organisator
         
         return cell
     }
@@ -89,7 +108,6 @@ class EventTableViewController: UITableViewController {
             }
         }
     }
-    
     
     func getEventsFromApi(radiusInMeters: Int, time: String, latitude: Double, longitude: Double, accessToken: String, completion: @escaping () -> ()) {
         
@@ -118,12 +136,10 @@ class EventTableViewController: UITableViewController {
                     var e : Event?
                     if(enddate != nil && startdate != nil && organisator != nil && description != nil && title != nil) {
                         e = Event(name: title!, attending: attending!, afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link)
-                        print("created")
                     }
                     
                     if(e != nil) {
                         self.mappedEvents.append(e!)
-                        print(self.mappedEvents.count)
                     }
                 }
             }

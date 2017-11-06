@@ -39,7 +39,9 @@ class FavoriteEventTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let event = favorites[indexPath.row]
         //VehiclesDatabase.instance.deleteVehicle(vid: 1)
-        cell.eventNam.text = "\(event.name)"
+        cell.eventNam.text = event.name
+        cell.organisator.text = event.organisator
+        cell.attenders.text = "\(event.attending)"
         
         return cell
     }
