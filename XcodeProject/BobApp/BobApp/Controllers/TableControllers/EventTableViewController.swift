@@ -48,7 +48,6 @@ class EventTableViewController: UITableViewController {
                     self.present(alertController, animated: true, completion: nil)
                 }
             })
-            
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: nil, message: "Even geduld aub...", preferredStyle: .alert)
                 
