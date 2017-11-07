@@ -23,12 +23,6 @@ class EventTableViewController: UITableViewController {
     var accessToken:String! = FBSDKAccessToken.current().tokenString
     var selectedRow: Int = -1
     
-    func save() {
-        let savedData = NSKeyedArchiver.archivedData(withRootObject: mappedEvents)
-        let eventsLoadedFromApi = UserDefaults.standard
-        eventsLoadedFromApi.set(savedData, forKey: "mappedEvents")
-    }
-    
     @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
     }
     
@@ -120,7 +114,10 @@ class EventTableViewController: UITableViewController {
         if (segue.identifier == "FavoriteEventsSegue") {
             if let navigationViewController = segue.destination as? UINavigationController {
                 let favoriteViewController = navigationViewController.topViewController as! FavoriteEventTableViewController;
-                favoriteViewController.favorites = self.favoriteEvents
+                let defaults = UserDefaults.standard
+                let encodedData = NSKeyedArchiver.archivedData(withRootObject: favoriteEvents)
+                defaults.set(encodedData, forKey: "FavoriteEvents")
+                
             }
         }
     }
@@ -173,8 +170,3 @@ class EventTableViewController: UITableViewController {
     }
     
 }
-
-
-
-
-

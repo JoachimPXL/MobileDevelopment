@@ -8,7 +8,21 @@
 
 import Foundation
 
-class Event: NSObject {
+class Event: NSObject, NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.attending, forKey: "attending")
+        aCoder.encode(self.afstand ,forKey: "afstand")
+        aCoder.encode(self.startdate, forKey: "startdate")
+        aCoder.encode(self.enddate, forKey: "enddate")
+        aCoder.encode(self.organisator, forKey: "organisator")
+        aCoder.encode(self.eventDescription, forKey: "eventDescription")
+        aCoder.encode(self.lat, forKey: "latitude")
+        aCoder.encode(self.long, forKey: "longitude")
+        aCoder.encode(self.link, forKey: "link")
+        aCoder.encode(self.profilePicture, forKey: "profilePicture")
+        aCoder.encode(self.bannerPicture, forKey: "bannerPicture")
+    }
     
     var name : String
     var afstand: Double
@@ -41,49 +55,19 @@ class Event: NSObject {
     
     // MARK: NSCoding
     
-    required convenience init?(coder decoder: NSCoder) {
-        guard let name = decoder.decodeObject(forKey: "name") as? String,
-            let attending = decoder.decodeObject(forKey: "attending") as? Int,
-            let afstand = decoder.decodeObject(forKey: "afstand") as? Double,
-            let startDate = decoder.decodeObject(forKey: "startdate") as? String,
-            let endDate = decoder.decodeObject(forKey: "enddate") as? String,
-            let organisator = decoder.decodeObject(forKey: "organisator") as? String,
-            let eventDescription = decoder.decodeObject(forKey: "eventDescription") as? String,
-            let latitude = decoder.decodeObject(forKey: "latitude") as? Double,
-            let longitude = decoder.decodeObject(forKey: "longitude") as? Double,
-            let link = decoder.decodeObject(forKey: "link") as? String,
-            let profilePicture = decoder.decodeObject(forKey: "profilePicture") as? String,
-            let bannerPicture = decoder.decodeObject(forKey: "bannerPicture") as? String
-            else { return nil }
+    required init?(coder decoder: NSCoder) {
+        name = decoder.decodeObject(forKey: "name") as! String
+        attending = decoder.decodeInteger(forKey: "attending")
+        afstand = decoder.decodeDouble(forKey: "afstand")
+        startdate = decoder.decodeObject(forKey: "startdate") as! String
+        enddate = decoder.decodeObject(forKey: "enddate") as! String
+        organisator = decoder.decodeObject(forKey: "organisator") as! String
+        eventDescription = decoder.decodeObject(forKey: "eventDescription") as! String
+        lat = decoder.decodeDouble(forKey: "latitude")
+        long = decoder.decodeDouble(forKey: "longitude")
+        link = decoder.decodeObject(forKey: "link") as! String
+        profilePicture = decoder.decodeObject(forKey: "profilePicture") as! String
+        bannerPicture = decoder.decodeObject(forKey: "bannerPicture") as! String
         
-        self.init(
-            name: name,
-            attending: attending,
-            afstand: afstand,
-            startdate: startDate,
-            enddate: endDate,
-            organisator: organisator,
-            description: eventDescription,
-            lat: latitude,
-            long: longitude,
-            link: link,
-            profilePicture:profilePicture,
-            bannerPicture: bannerPicture
-        )
-    }
-    
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encode(self.name, forKey: "name")
-        coder.encode(Int(self.attending), forKey: "attending")
-        coder.encode(Double(self.afstand) ,forKey: "afstand")
-        coder.encode(self.startdate, forKey: "startdate")
-        coder.encode(self.enddate, forKey: "enddate")
-        coder.encode(self.organisator, forKey: "organisator")
-        coder.encode(self.eventDescription, forKey: "eventDescription")
-        coder.encode(self.lat, forKey: "latitude")
-        coder.encode(self.long, forKey: "longitude")
-        coder.encode(self.link, forKey: "link")
-        coder.encode(self.profilePicture, forKey: "profilePicture")
-        coder.encode(self.bannerPicture, forKey: "bannerPicture")
     }
 }

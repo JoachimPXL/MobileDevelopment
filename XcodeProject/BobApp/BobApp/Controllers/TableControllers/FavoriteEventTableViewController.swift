@@ -10,10 +10,17 @@ import UIKit
 import SDWebImage
 
 class FavoriteEventTableViewController: UITableViewController {
-    var favorites: [Event] = []
+    var favorites = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let decoded = UserDefaults.standard.object(forKey: "FavoriteEvents") as? Data
+        if decoded == nil {
+            favorites = []
+        } else {
+            favorites = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [Event]
+            tableView.reloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
