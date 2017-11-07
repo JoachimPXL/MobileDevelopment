@@ -7,6 +7,6 @@ target 'BobApp' do
 	pod 'SQLite.swift'
     pod 'SwiftyJSON'
     pod 'Alamofire', '~> 4.5'
-    pod 'PromiseKit/Alamofire', '~> 4.0'
+    pod 'SDWebImage', '~> 4.0'
 use_frameworks!
 end

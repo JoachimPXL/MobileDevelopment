@@ -12,6 +12,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import SDWebImage
 
 class EventTableViewController: UITableViewController {
     var mappedEvents: [Event] = []
@@ -20,6 +21,7 @@ class EventTableViewController: UITableViewController {
     var radiusInMeters: Int!
     var time:String!
     var accessToken:String! = FBSDKAccessToken.current().tokenString
+    var selectedRow: Int = -1
     
     @IBAction func refreshButton(_ sender: Any) {
         self.tableView.reloadData()
@@ -75,6 +77,7 @@ class EventTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.row
         self.performSegue(withIdentifier: "ShowDetailOfEventSegue", sender: nil)
     }
     
@@ -103,8 +106,9 @@ class EventTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ShowDetailOfEventSegue") {
             if let navigationViewController = segue.destination as? UINavigationController {
-                let vehicleViewController = navigationViewController.topViewController as! DetailViewController;
+                let detailViewController = navigationViewController.topViewController as! DetailViewController;
                 //add event ID for vehicle details.
+                detailViewController.selectedEvent = mappedEvents[selectedRow]
             }
         }
     }
@@ -130,7 +134,7 @@ class EventTableViewController: UITableViewController {
                     let description = event["description"].string
                     let lat = event["place"]["location"]["latitude"].double
                     let long = event["place"]["location"]["longitude"].double
-                    //TODO let image =
+                    
                     let id = event["id"].string
                     let link = "https://www.facebook.com/events/" + id!
                     var e : Event?
