@@ -9,9 +9,11 @@
 import UIKit
 
 class FavoriteUITableViewCell: UITableViewCell {
-    @IBOutlet weak var eventNam: UILabel!
+    @IBOutlet weak var photoEvent: UIImageView!
+    @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventOrganisator: UILabel!
     @IBOutlet weak var attenders: UILabel!
-    @IBOutlet weak var organisator: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -53,8 +53,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    // MARK: methods.
-    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error:Error) {
         if result.isCancelled {
             //handle cancellations
@@ -86,7 +84,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
         signInLabel.text = "Meld je aan met Facebook"
-        print("loggedout")
     }
     
     func navigateToNextPage() {

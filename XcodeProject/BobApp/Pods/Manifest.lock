@@ -20,9 +20,9 @@ PODS:
     - FBSDKCoreKit
   - KeychainSwift (9.0.2)
   - Pulsator (0.4.0)
-  - SDWebImage (4.2.1):
-    - SDWebImage/Core (= 4.2.1)
-  - SDWebImage/Core (4.2.1)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
+  - SDWebImage/Core (4.2.2)
   - SQLite.swift (0.11.4):
     - SQLite.swift/standard (= 0.11.4)
   - SQLite.swift/standard (0.11.4)
@@ -47,7 +47,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
   KeychainSwift: 3ab1d428d0dbff59cd056f1d0bfc640b36c2b081
   Pulsator: a0e7c006790a576de63280b2f0552ea1c1b83ce0
-  SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
+  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 

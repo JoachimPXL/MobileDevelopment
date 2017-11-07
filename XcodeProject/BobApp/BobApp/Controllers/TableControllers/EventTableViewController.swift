@@ -5,7 +5,6 @@
 //  Created by Joachim Zeelmaekers on 28/10/2017.
 //  Copyright © 2017 Joachim Zeelmaekers. All rights reserved.
 //
-
 import UIKit
 import FBSDKLoginKit
 import Foundation
@@ -16,6 +15,7 @@ import SDWebImage
 
 class EventTableViewController: UITableViewController {
     var mappedEvents: [Event] = []
+    var favoriteEvents: [Event] = []
     var longitude:Double!
     var latitude:Double!
     var radiusInMeters: Int!
@@ -23,31 +23,40 @@ class EventTableViewController: UITableViewController {
     var accessToken:String! = FBSDKAccessToken.current().tokenString
     var selectedRow: Int = -1
     
-    @IBAction func refreshButton(_ sender: Any) {
-        self.tableView.reloadData()
+    func save() {
+        let savedData = NSKeyedArchiver.archivedData(withRootObject: mappedEvents)
+        let eventsLoadedFromApi = UserDefaults.standard
+        eventsLoadedFromApi.set(savedData, forKey: "mappedEvents")
     }
+    
+    @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if(self.mappedEvents.count <= 0 ) {
         DispatchQueue.global(qos: .background).async {
-            self.getEventsFromApi(radiusInMeters: self.radiusInMeters, time: self.time, latitude: self.latitude, longitude: self.longitude, accessToken: self.accessToken, completion: {
-                self.tableView.reloadData()
-                self.dismiss(animated: false, completion: nil)
-                
-                if(self.mappedEvents.count == 1) {
-                    let alertController = UIAlertController(title: "Evenementen", message:
-                        "Er is \(self.mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+            
+                self.getEventsFromApi(radiusInMeters: self.radiusInMeters, time: self.time, latitude: self.latitude, longitude: self.longitude, accessToken: self.accessToken, completion: {
+                    self.tableView.reloadData()
+                    self.dismiss(animated: false, completion: nil)
                     
-                    self.present(alertController, animated: true, completion: nil)
-                } else {
-                    let alertController = UIAlertController(title: "Evenementen", message:
-                        "Er zijn \(self.mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            })
+                    if(self.mappedEvents.count == 1) {
+                        let alertController = UIAlertController(title: "Evenementen", message:
+                            "Er is \(self.mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                        alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    } else {
+                        let alertController = UIAlertController(title: "Evenementen", message:
+                            "Er zijn \(self.mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                        alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                })
+            }
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: nil, message: "Even geduld aub...", preferredStyle: .alert)
                 
@@ -60,7 +69,6 @@ class EventTableViewController: UITableViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,20 +93,20 @@ class EventTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventUITableViewCell  else {
             fatalError("The dequeued cell is not an instance of EventUITableCell.")
         }
-
         let event = mappedEvents[indexPath.row]
         cell.eventNam.text = event.name
         cell.attenders.text = "aanwezigen: \(event.attending)"
         cell.organisator.text = event.organisator
-        
+        cell.photoEvent.sd_setImage(with: URL(string: event.profilePicture), placeholderImage: UIImage(named: ""))
         return cell
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let favorite = UITableViewRowAction(style: .normal, title: "❤ \n Favoriet") { action, index in
-            //toevoegen aan favorieten via NSFetchedResultController.
+            self.favoriteEvents.append(self.mappedEvents[indexPath.row])
             tableView.reloadData()
         }
+        favorite.backgroundColor = UIColor.green
         return [favorite]
     }
     
@@ -106,14 +114,18 @@ class EventTableViewController: UITableViewController {
         if (segue.identifier == "ShowDetailOfEventSegue") {
             if let navigationViewController = segue.destination as? UINavigationController {
                 let detailViewController = navigationViewController.topViewController as! DetailViewController;
-                //add event ID for vehicle details.
                 detailViewController.selectedEvent = mappedEvents[selectedRow]
+            }
+        }
+        if (segue.identifier == "FavoriteEventsSegue") {
+            if let navigationViewController = segue.destination as? UINavigationController {
+                let favoriteViewController = navigationViewController.topViewController as! FavoriteEventTableViewController;
+                favoriteViewController.favorites = self.favoriteEvents
             }
         }
     }
     
     func getEventsFromApi(radiusInMeters: Int, time: String, latitude: Double, longitude: Double, accessToken: String, completion: @escaping () -> ()) {
-        
         let url = "http://0.0.0.0:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
         print(url);
         Alamofire.request(url).validate().responseJSON { response in
@@ -142,7 +154,7 @@ class EventTableViewController: UITableViewController {
                     if(enddate != nil && startdate != nil && organisator != nil && description != nil && title != nil && profilePic != nil && bannerPic != nil) {
                         e = Event(name: title!, attending: attending!, afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link, profilePicture: profilePic!, bannerPicture: bannerPic! )
                     }
-                
+                    
                     if(e != nil) {
                         self.mappedEvents.append(e!)
                     }

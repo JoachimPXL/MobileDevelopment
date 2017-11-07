@@ -9,19 +9,19 @@
 import UIKit
 import CoreLocation
 import MapKit
+import SDWebImage
 
 class DetailViewController: UIViewController  {
     var selectedEvent: Event?
-    
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var attenders: UILabel!
     @IBOutlet weak var organisator: UILabel!
     @IBOutlet weak var startEvent: UILabel!
     @IBOutlet weak var endEvent: UILabel!
+    @IBOutlet weak var bannerEvent: UIImageView!
     
     @IBAction func openLocationOfEvent(_ sender: Any) {
-    
             let regionDistance:CLLocationDistance = 10000
             let coordinates = CLLocationCoordinate2DMake((selectedEvent?.lat)!, (selectedEvent?.long)!)
             let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
@@ -36,30 +36,29 @@ class DetailViewController: UIViewController  {
         }
     
     @IBAction func openEventLinkViaFbApp(_ sender: Any) {
-        //facebookapp openen indien deze geïnstalleerd is en anders browser naar event. //WERKT enkel in safari-browser, niet in APP.
-        //        let fbURLWeb: NSURL = NSURL(string: "https://www.facebook.com/degroeneletters/")!
-        print(selectedEvent?.link)
         let fbURLID: NSURL = NSURL(string: (selectedEvent?.link)!)!
         
         if(UIApplication.shared.canOpenURL(fbURLID as URL)){
             UIApplication.shared.open(fbURLID as URL, options: [:], completionHandler: nil)
-        } else {
-            // FB is not installed, open in safari
-            //            UIApplication.shared.open(fbURLWeb as URL, options: [:], completionHandler: nil)
         }
     }
+    
+    @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //GoBackToEventsSegue
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
         
         eventTitle.text = selectedEvent?.name
-        attenders.text = "\(String(describing: selectedEvent?.attending))"
+        attenders.text = "aanwezigen: \(selectedEvent?.attending ?? 0)"
         organisator.text = selectedEvent?.organisator
         startEvent.text = selectedEvent?.startdate
         endEvent.text = selectedEvent?.enddate
-        eventDescription.text = selectedEvent?.description
+        eventDescription.text = selectedEvent?.eventDescription
+        bannerEvent.sd_setImage(with: URL(string: (selectedEvent?.bannerPicture)!), placeholderImage: UIImage(named: ""))
     }
     
     override func didReceiveMemoryWarning() {

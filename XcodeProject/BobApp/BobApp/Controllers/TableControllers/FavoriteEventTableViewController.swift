@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FavoriteEventTableViewController: UITableViewController {
     var favorites: [Event] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //favorites.append(Event(name: "Testevent", attending: 90,afstand: 90.10))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,29 +29,26 @@ class FavoriteEventTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "FavoriteEventCell"
+        let cellIdentifier = "FavoriteUITableCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? FavoriteUITableViewCell  else {
-            fatalError("The dequeued cell is not an instance of FavoriteEventCell.")
+            fatalError("The dequeued cell is not an instance of FavoriteUITableCell.")
         }
-        
-        // Fetches the appropriate meal for the data source layout.
+
         let event = favorites[indexPath.row]
-        //VehiclesDatabase.instance.deleteVehicle(vid: 1)
-        cell.eventNam.text = event.name
-        cell.organisator.text = event.organisator
-        cell.attenders.text = "\(event.attending)"
+        cell.eventName.text = event.name
+        cell.eventOrganisator.text = event.organisator
+        cell.attenders.text = "Aanwezigen \(event.attending)"
+        cell.photoEvent.sd_setImage(with: URL(string: event.profilePicture), placeholderImage: UIImage(named: ""))
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "\u{267A}\n Verwijder") { action, index in
-            //verwijderen uit favorieten.
-            //tableView.reloadData()
+            self.favorites.remove(at: indexPath.row)
+            tableView.reloadData()
         }
-        
         return [delete]
     }
     

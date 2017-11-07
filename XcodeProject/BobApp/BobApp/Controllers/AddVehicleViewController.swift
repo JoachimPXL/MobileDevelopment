@@ -50,8 +50,6 @@ class AddVehicleViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
-    //Keyboard management
-    
     @objc
     func hideKeyboard() {
         view.endEditing(true)

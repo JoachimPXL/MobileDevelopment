@@ -24,9 +24,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //When someone taps in the app while typing (not in keyboard), the keyboard gets cancelled
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
         
@@ -55,7 +52,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func radiusValueChanged(_ sender: Any) {
@@ -80,13 +76,11 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     
     func getLongitude() -> Double! {
         let locValue = locationManager.location?.coordinate
-        //print("locations = \(locValue?.latitude) \(locValue?.longitude)")
         return locValue?.longitude
     }
     
     func getLatitude() -> Double! {
         let locValue = locationManager.location?.coordinate
-        //        print("locations = \(locValue?.latitude) \(locValue?.longitude)")
         return locValue?.latitude
     }
     
@@ -108,8 +102,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
             
             if let navigationViewController = segue.destination as? UINavigationController{
                 let eventTableViewController = navigationViewController.topViewController as! EventTableViewController;
-                print("tapped")
-                //nodige data voor api call meesturen met segue naar volgende controller.
                 eventTableViewController.accessToken = keychain.get("accessToken")!
                 eventTableViewController.latitude = getLatitude()
                 eventTableViewController.longitude = getLongitude()

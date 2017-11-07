@@ -15,7 +15,6 @@ class VehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //VehiclesDatabase.instance.addVehicle( vfirst_name: "Test", vlast_name: "lastTest", vdateOfBirth: Date(timeIntervalSinceReferenceDate: -123456789.0), vmeetupLocation: "Lummen", vdepartureToEvent: "21:00", vdepartureAtEvent: "03:00", vdescription: "Opel Astra - zwart", vphoneNumber: "0492600330", vcapacity: 1)
         refreshDataInTableView()
     }
     

@@ -40,8 +40,6 @@ class AddPassengerViewController: UIViewController {
         }
     }
     
-    //Keyboard management
-    
     @objc
     func hideKeyboard() {
         view.endEditing(true)
