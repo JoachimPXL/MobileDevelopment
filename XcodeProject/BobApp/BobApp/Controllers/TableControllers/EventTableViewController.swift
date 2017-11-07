@@ -115,6 +115,7 @@ class EventTableViewController: UITableViewController {
     func getEventsFromApi(radiusInMeters: Int, time: String, latitude: Double, longitude: Double, accessToken: String, completion: @escaping () -> ()) {
         
         let url = "http://0.0.0.0:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
+        print(url);
         Alamofire.request(url).validate().responseJSON { response in
             if let jsonObj = response.result.value {
                 let json = JSON(jsonObj)
@@ -133,14 +134,15 @@ class EventTableViewController: UITableViewController {
                     let description = event["description"].string
                     let lat = event["place"]["location"]["latitude"].double
                     let long = event["place"]["location"]["longitude"].double
-                    
                     let id = event["id"].string
                     let link = "https://www.facebook.com/events/" + id!
+                    let profilePic = event["coverPicture"].string
+                    let bannerPic = event["coverPicture"].string
                     var e : Event?
-                    if(enddate != nil && startdate != nil && organisator != nil && description != nil && title != nil) {
-                        e = Event(name: title!, attending: attending!, afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link)
+                    if(enddate != nil && startdate != nil && organisator != nil && description != nil && title != nil && profilePic != nil && bannerPic != nil) {
+                        e = Event(name: title!, attending: attending!, afstand: distanceInMeters, startdate: startdate!, enddate: enddate!, organisator: organisator!, description: description!, lat: lat!, long: long!, link: link, profilePicture: profilePic!, bannerPicture: bannerPic! )
                     }
-                    
+                
                     if(e != nil) {
                         self.mappedEvents.append(e!)
                     }

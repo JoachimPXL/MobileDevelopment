@@ -12,7 +12,6 @@ import CoreLocation
 import KeychainSwift
 import Alamofire
 import SwiftyJSON
-import PromiseKit
 
 class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()

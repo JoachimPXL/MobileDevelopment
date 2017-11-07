@@ -19,8 +19,11 @@ class Event {
     var organisator: String
     var lat : Double
     var long: Double
+    var profilePicture : String
+    var bannerPicture : String
     
-    init(name: String, attending: Int, afstand:Double, startdate:String, enddate:String, organisator:String, description:String, lat:Double, long:Double,link:String) {
+    init(name: String, attending: Int, afstand:Double, startdate:String, enddate:String, organisator:String, description:String, lat:Double, long:Double,link:String,
+         profilePicture: String, bannerPicture: String) {
         self.name = name
         self.attending = attending
         self.afstand = afstand
@@ -31,5 +34,7 @@ class Event {
         self.long = long
         self.lat = lat
         self.link = link
+        self.profilePicture = profilePicture
+        self.bannerPicture = bannerPicture
     }
 }
