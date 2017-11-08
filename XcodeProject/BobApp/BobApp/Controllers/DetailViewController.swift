@@ -17,8 +17,6 @@ class DetailViewController: UIViewController  {
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var attenders: UILabel!
     @IBOutlet weak var organisator: UILabel!
-    @IBOutlet weak var startEvent: UILabel!
-    @IBOutlet weak var endEvent: UILabel!
     @IBOutlet weak var bannerEvent: UIImageView!
     
     @IBAction func openLocationOfEvent(_ sender: Any) {
@@ -48,15 +46,11 @@ class DetailViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //GoBackToEventsSegue
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
-        
-        eventTitle.text = selectedEvent?.name
+        eventTitle.text = (selectedEvent?.name)
         attenders.text = "aanwezigen: \(selectedEvent?.attending ?? 0)"
         organisator.text = selectedEvent?.organisator
-        startEvent.text = selectedEvent?.startdate
-        endEvent.text = selectedEvent?.enddate
         eventDescription.text = selectedEvent?.eventDescription
         bannerEvent.sd_setImage(with: URL(string: (selectedEvent?.bannerPicture)!), placeholderImage: UIImage(named: ""))
     }

@@ -23,7 +23,7 @@ class AddVehicleViewController: UIViewController {
     
     @IBAction func addVehicleButton(_ sender: Any) {
         
-        if let id = VehiclesDatabase.instance.addVehicle(
+        if let id = VehiclesDatabase.instance.addVehicle (
             vfirst_name: firstnameTextField.text!,
             vlast_name: lastnameTextField.text!,
             vdateOfBirth: dateOfBirthPicker.date,

@@ -19,6 +19,9 @@ class FavoriteEventTableViewController: UITableViewController {
             favorites = []
         } else {
             favorites = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [Event]
+            let defaults = UserDefaults.standard
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: favorites)
+            defaults.set(encodedData, forKey: "RestFavoriteEvents")
             tableView.reloadData()
         }
     }
@@ -54,6 +57,11 @@ class FavoriteEventTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "\u{267A}\n Verwijder") { action, index in
             self.favorites.remove(at: indexPath.row)
+            let defaults = UserDefaults.standard
+            defaults.removeObject(forKey: "RestFavoriteEvents")
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.favorites)
+            defaults.set(encodedData, forKey: "RestFavoriteEvents")
+            defaults.synchronize()
             tableView.reloadData()
         }
         return [delete]

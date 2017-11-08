@@ -28,40 +28,43 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if(self.mappedEvents.count <= 0 ) {
+        let decoded = UserDefaults.standard.object(forKey: "RestFavoriteEvents") as? Data
+        if decoded == nil {
+            favoriteEvents = []
+        } else {
+            favoriteEvents = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [Event]
+        }
         DispatchQueue.global(qos: .background).async {
             
-                self.getEventsFromApi(radiusInMeters: self.radiusInMeters, time: self.time, latitude: self.latitude, longitude: self.longitude, accessToken: self.accessToken, completion: {
-                    self.tableView.reloadData()
-                    self.dismiss(animated: false, completion: nil)
+            self.getEventsFromApi(radiusInMeters: self.radiusInMeters, time: self.time, latitude: self.latitude, longitude: self.longitude, accessToken: self.accessToken, completion: {
+                self.tableView.reloadData()
+                self.dismiss(animated: false, completion: nil)
+                
+                if(self.mappedEvents.count == 1) {
+                    let alertController = UIAlertController(title: "Evenementen", message:
+                        "Er is \(self.mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
                     
-                    if(self.mappedEvents.count == 1) {
-                        let alertController = UIAlertController(title: "Evenementen", message:
-                            "Er is \(self.mappedEvents.count) evenement gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-                        alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
-                        
-                        self.present(alertController, animated: true, completion: nil)
-                    } else {
-                        let alertController = UIAlertController(title: "Evenementen", message:
-                            "Er zijn \(self.mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
-                        alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
-                        
-                        self.present(alertController, animated: true, completion: nil)
-                    }
-                })
-            }
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: nil, message: "Even geduld aub...", preferredStyle: .alert)
-                
-                let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-                loadingIndicator.hidesWhenStopped = true
-                loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-                loadingIndicator.startAnimating();
-                
-                alert.view.addSubview(loadingIndicator)
-                self.present(alert, animated: true, completion: nil)
-            }
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "Evenementen", message:
+                        "Er zijn \(self.mappedEvents.count) evenementen gevonden.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        }
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: nil, message: "Even geduld aub...", preferredStyle: .alert)
+            
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.startAnimating();
+            
+            alert.view.addSubview(loadingIndicator)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -114,21 +117,20 @@ class EventTableViewController: UITableViewController {
         if (segue.identifier == "FavoriteEventsSegue") {
             if let navigationViewController = segue.destination as? UINavigationController {
                 let favoriteViewController = navigationViewController.topViewController as! FavoriteEventTableViewController;
-                let defaults = UserDefaults.standard
-                let encodedData = NSKeyedArchiver.archivedData(withRootObject: favoriteEvents)
-                defaults.set(encodedData, forKey: "FavoriteEvents")
-                
+                    let defaults = UserDefaults.standard
+                    let encodedData = NSKeyedArchiver.archivedData(withRootObject: favoriteEvents)
+                    defaults.set(encodedData, forKey: "FavoriteEvents")
             }
         }
     }
     
     func getEventsFromApi(radiusInMeters: Int, time: String, latitude: Double, longitude: Double, accessToken: String, completion: @escaping () -> ()) {
-        let url = "http://0.0.0.0:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
+        let url = "http://192.168.0.247:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
         print(url);
         Alamofire.request(url).validate().responseJSON { response in
             if let jsonObj = response.result.value {
                 let json = JSON(jsonObj)
-                for (key, event) in json["events"] {
+                for (_, event) in json["events"] {
                     // get coordinates from event and your current to calculate distance.
                     let coordinate₀ = CLLocation(latitude: event["place"]["location"]["latitude"].double!, longitude: event["place"]["location"]["longitude"].double!)
                     let coordinate₁ = CLLocation(latitude: latitude, longitude: longitude)

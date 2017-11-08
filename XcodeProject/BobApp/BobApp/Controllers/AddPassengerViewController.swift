@@ -48,7 +48,7 @@ class AddPassengerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "AddedPassengerSegueToBobs") {
             if let navigationViewController = segue.destination as? UINavigationController {
-                let vehicleViewController = navigationViewController.topViewController as! VehicleTableViewController;
+                let _ = navigationViewController.topViewController as! VehicleTableViewController;
             }
         }
     }

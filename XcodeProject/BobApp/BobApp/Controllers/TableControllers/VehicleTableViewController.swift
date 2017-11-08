@@ -56,7 +56,7 @@ class VehicleTableViewController: UITableViewController {
             self.refreshDataInTableView()
         }
         
-        var ride = UITableViewRowAction(style: .default, title: "\u{21D2}\n Rij mee") { action, index in
+        let ride = UITableViewRowAction(style: .default, title: "\u{21D2}\n Rij mee") { action, index in
             self.selectedRowId = indexPath.row + 1
             let amountOfPassengers = PassengersDatabase.instance.getPassengersCountByVehicleId(vVehicleId: Int64(indexPath.row + 1))
             let foundVehicle = VehiclesDatabase.instance.getVehicleById(vId: indexPath.row + 1)
