@@ -14,9 +14,9 @@ PODS:
     - FacebookCore (~> 0.3)
     - FBSDKCoreKit (~> 4.27)
     - FBSDKLoginKit (~> 4.27)
-  - FBSDKCoreKit (4.27.1):
+  - FBSDKCoreKit (4.28.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.27.1):
+  - FBSDKLoginKit (4.28.0):
     - FBSDKCoreKit
   - KeychainSwift (9.0.2)
   - Pulsator (0.4.0)
@@ -26,7 +26,7 @@ PODS:
   - SQLite.swift (0.11.4):
     - SQLite.swift/standard (= 0.11.4)
   - SQLite.swift/standard (0.11.4)
-  - SwiftyJSON (3.1.4)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -43,13 +43,13 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
-  FBSDKCoreKit: 03365dad5d790249196ffad8be4f6d8a2d98f932
-  FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
+  FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
+  FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
   KeychainSwift: 3ab1d428d0dbff59cd056f1d0bfc640b36c2b081
   Pulsator: a0e7c006790a576de63280b2f0552ea1c1b83ce0
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
 PODFILE CHECKSUM: 50b0f1940a29a18a3d7b10b77d3db2aaf3fb7023
 

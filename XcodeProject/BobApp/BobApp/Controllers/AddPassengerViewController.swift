@@ -28,9 +28,8 @@ class AddPassengerViewController: UIViewController {
             let phoneNumber = self.phoneNumber.text!
             let others = self.others.text!
         
-        if PassengersDatabase.instance.addPassenger(vFirst_name: firstName, vLast_name: lastName, vOthers: others, vPhoneNumber: phoneNumber, vVehicleId: Int64(self.vehicleId)) != -1{
+        if PassengersDatabase.instance.addPassenger(vFirst_name: firstName, vLast_name: lastName, vOthers: others, vPhoneNumber: phoneNumber, vVehicleId: Int64(self.vehicleId)) != -1 {
             self.performSegue(withIdentifier: "AddedPassengerSegueToBobs", sender: nil)
-            
         } else {
             let alertController = UIAlertController(title: "Error", message:
                 "Er ging iets mis bij het toevoegen van een passagier.", preferredStyle: UIAlertControllerStyle.alert)

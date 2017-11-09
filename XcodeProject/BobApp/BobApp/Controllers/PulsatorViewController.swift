@@ -30,9 +30,9 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
+            locationManager.delegate = self
         }
     }
     
@@ -68,10 +68,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         
         if(longitude != nil && latitude != nil && radiusInMeters != 0 && time != nil && accessToken != nil) {
         self.performSegue(withIdentifier: "ScanEventsSegue", sender: nil)
-        } else {
-            print("Alert")
         }
-        
     }
     
     func getLongitude() -> Double! {
@@ -99,7 +96,6 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ScanEventsSegue") {
-            
             if let navigationViewController = segue.destination as? UINavigationController{
                 let eventTableViewController = navigationViewController.topViewController as! EventTableViewController;
                 eventTableViewController.accessToken = keychain.get("accessToken")!
