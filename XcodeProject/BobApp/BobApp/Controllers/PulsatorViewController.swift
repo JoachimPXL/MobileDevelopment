@@ -17,6 +17,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var keychain = KeychainSwift()
     
+    @IBOutlet weak var pinpointImage: UIImageView!
     @IBOutlet weak var radiusTextField: UITextField!
     @IBOutlet weak var afternoonOrEvening: UISegmentedControl!
     @IBOutlet weak var radiusSlider: UISlider!
@@ -39,10 +40,10 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(false)
         let pulsator = Pulsator()
-        pulsator.position = CGPoint(x: 175, y: 223)
+        pulsator.position = pinpointImage.center
         pulsator.numPulse = 2
         pulsator.radius = 240
-        pulsator.backgroundColor = UIColor(red:1, green:0, blue: 0, alpha:1).cgColor
+        pulsator.backgroundColor = UIColor(red:0, green:0, blue: 1, alpha:1).cgColor
         pulsator.animationDuration = 3
         pulsator.pulseInterval = 1
         
@@ -56,7 +57,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func radiusValueChanged(_ sender: Any) {
         radiusSlider.setValue(Float(lroundf(radiusSlider.value)), animated: true)
-        radiusTextField.text = "\(radiusSlider.value) KM"
+        radiusTextField.text = "\(radiusSlider.value) Km"
     }
 
     @IBAction func scanRadius(_ sender: Any) {
@@ -68,10 +69,7 @@ class PulsatorViewController: UIViewController, CLLocationManagerDelegate {
         
         if(longitude != nil && latitude != nil && radiusInMeters != 0 && time != nil && accessToken != nil) {
         self.performSegue(withIdentifier: "ScanEventsSegue", sender: nil)
-        } else {
-            print("Alert")
         }
-        
     }
     
     func getLongitude() -> Double! {

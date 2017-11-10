@@ -69,7 +69,7 @@ class VehicleTableViewController: UITableViewController {
             } else {
                 let alertController = UIAlertController(title: "Volle wagen", message:
                     "Kies aub een nieuwe bob!", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive,handler: nil))
+                alertController.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.destructive,handler: nil))
                 
                 self.present(alertController, animated: true, completion: nil)
             }

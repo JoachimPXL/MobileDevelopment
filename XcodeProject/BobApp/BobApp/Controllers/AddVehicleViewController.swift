@@ -36,16 +36,15 @@ class AddVehicleViewController: UIViewController {
             
             self.performSegue(withIdentifier: "AddedCarSegueToBobs", sender: nil)
         } else {
-            let alertController = UIAlertController(title: "Something went wrong", message:
+            let alertController = UIAlertController(title: "Foutmelding", message:
                 "Probeer alles in te vullen en probeer het opnieuw.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive,handler: nil))
+            alertController.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.destructive,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
     }
     
     override func viewDidLoad() {
-        //When someone taps in the app while typing (not in keyboard), the keyboard gets cancelled
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
     }

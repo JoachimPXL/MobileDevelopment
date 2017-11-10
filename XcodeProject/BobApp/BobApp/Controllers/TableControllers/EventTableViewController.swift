@@ -35,7 +35,7 @@ class EventTableViewController: UITableViewController {
             favoriteEvents = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [Event]
         }
         DispatchQueue.global(qos: .background).async {
-            
+            if(self.latitude != nil && self.longitude != nil) {
             self.getEventsFromApi(radiusInMeters: self.radiusInMeters, time: self.time, latitude: self.latitude, longitude: self.longitude, accessToken: self.accessToken, completion: {
                 self.tableView.reloadData()
                 self.dismiss(animated: false, completion: nil)
@@ -54,6 +54,14 @@ class EventTableViewController: UITableViewController {
                     self.present(alertController, animated: true, completion: nil)
                 }
             })
+            } else {
+                self.dismiss(animated: false, completion: nil)
+                let alertController = UIAlertController(title: "Foutmelding", message:
+                    "Je locatievoorzieningen staan niet aan, gelieve deze aan te zetten.", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.destructive,handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
         DispatchQueue.main.async {
             let alert = UIAlertController(title: nil, message: "Even geduld aub...", preferredStyle: .alert)
@@ -92,7 +100,7 @@ class EventTableViewController: UITableViewController {
         }
         let event = mappedEvents[indexPath.row]
         cell.eventNam.text = event.name
-        cell.attenders.text = "aanwezigen: \(event.attending)"
+        cell.attenders.text = "Aanwezigen: \(event.attending)"
         cell.organisator.text = event.organisator
         cell.photoEvent.sd_setImage(with: URL(string: event.profilePicture), placeholderImage: UIImage(named: ""))
         return cell

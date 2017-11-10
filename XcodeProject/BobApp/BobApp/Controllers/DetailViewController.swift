@@ -29,13 +29,12 @@ class DetailViewController: UIViewController  {
             ]
             let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = "Start"
+        mapItem.name = "Routebeschrijving naar \(selectedEvent?.name ?? "")"
             mapItem.openInMaps(launchOptions: options)
         }
     
     @IBAction func openEventLinkViaFbApp(_ sender: Any) {
         let fbURLID: NSURL = NSURL(string: (selectedEvent?.link)!)!
-        
         if(UIApplication.shared.canOpenURL(fbURLID as URL)){
             UIApplication.shared.open(fbURLID as URL, options: [:], completionHandler: nil)
         }
@@ -57,7 +56,6 @@ class DetailViewController: UIViewController  {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @objc

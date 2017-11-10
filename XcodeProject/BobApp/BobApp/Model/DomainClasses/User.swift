@@ -10,7 +10,7 @@ import UIKit
 
 class User {
     
-    //Properties
+    //MARK: Properties
     var email:String
     var vehicles:[Vehicle]
     

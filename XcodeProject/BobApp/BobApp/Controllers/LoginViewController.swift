@@ -19,7 +19,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //When someone taps in the app while typing (not in keyboard), the keyboard gets cancelled
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
         
@@ -41,7 +40,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,7 +53,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error:Error) {
         if result.isCancelled {
-            //handle cancellations
+            let alertController = UIAlertController(title: "Foutmelding", message:
+                "Je hebt je aanmelding via Facebook geannuleerd. Gelieve het opnieuw te proberen om gebruik te maken van de BobApp.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ga door", style: UIAlertActionStyle.destructive,handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
         }
         else {
             if result.token != nil
