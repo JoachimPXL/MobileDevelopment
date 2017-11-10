@@ -35,6 +35,7 @@ class EventTableViewController: UITableViewController {
             favoriteEvents = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! [Event]
         }
         DispatchQueue.global(qos: .background).async {
+
             if(self.latitude != nil && self.longitude != nil) {
             self.getEventsFromApi(radiusInMeters: self.radiusInMeters, time: self.time, latitude: self.latitude, longitude: self.longitude, accessToken: self.accessToken, completion: {
                 self.tableView.reloadData()
@@ -133,7 +134,7 @@ class EventTableViewController: UITableViewController {
     }
     
     func getEventsFromApi(radiusInMeters: Int, time: String, latitude: Double, longitude: Double, accessToken: String, completion: @escaping () -> ()) {
-        let url = "http://192.168.0.247:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
+        let url = "http://0.0.0.0:3000/events?&lat=\(latitude)&lng=\(longitude)&distance=\(radiusInMeters)&sort=venue&accessToken=\(accessToken)"
         print(url);
         Alamofire.request(url).validate().responseJSON { response in
             if let jsonObj = response.result.value {

@@ -63,8 +63,6 @@ class VehicleTableViewController: UITableViewController {
             let capacityInVehicle = foundVehicle.capacity
             
             if(amountOfPassengers < capacityInVehicle) {
-                print(amountOfPassengers)
-                print(capacityInVehicle)
                 self.performSegue(withIdentifier: "AddPassengerIdentifier", sender: nil)
             } else {
                 let alertController = UIAlertController(title: "Volle wagen", message:

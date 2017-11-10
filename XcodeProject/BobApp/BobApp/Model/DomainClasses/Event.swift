@@ -9,6 +9,7 @@
 import Foundation
 
 class Event: NSObject, NSCoding {
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: "name")
         aCoder.encode(self.attending, forKey: "attending")
